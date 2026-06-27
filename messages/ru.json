@@ -1,0 +1,20 @@
+{
+  "Home": {
+    "title": "Привет!"
+  },
+  "About": {
+    "title": "О проекте"
+  },
+  "Login": {
+    "title": "Вход"
+  },
+  "Register": {
+    "title": "Регистрация"
+  },
+  "NotFound": {
+    "title": "Не найдено"
+  },
+  "History": {
+    "title": "Аналитика"
+  }
+}

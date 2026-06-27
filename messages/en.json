@@ -1,0 +1,20 @@
+{
+  "Home": {
+    "title": "Hello!"
+  },
+  "About": {
+    "title": "About"
+  },
+  "Login": {
+    "title": "Sign In"
+  },
+  "Register": {
+    "title": "Sign Up"
+  },
+  "NotFound": {
+    "title": "Not Found"
+  },
+  "History": {
+    "title": "History"
+  }
+}
