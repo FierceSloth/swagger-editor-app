@@ -1,0 +1,44 @@
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+
+  border-radius: var(--radius-sm, 4px);
+  border: 1px solid var(--badge-border-color);
+  background-color: var(--badge-color);
+  padding: 4px 12px;
+
+  font-family: var(--font-ui), monospace;
+  white-space: nowrap;
+  transition: color 0.3s ease;
+}
+
+.text {
+  color: var(--badge-text-color);
+  font-size: 12px;
+}
+
+.color-gray {
+  --badge-color: var(--bg-surface-2);
+  --badge-text-color: var(--text-secondary);
+  --badge-border-color: var(--bg-surface-3);
+}
+
+.color-green {
+  --badge-color: rgb(52 211 153 / 0.05);
+  --badge-text-color: var(--green-color);
+  --badge-border-color: rgb(52 211 153 / 0.1);
+}
+
+.color-red {
+  --badge-color: rgb(251 113 133 / 0.05);
+  --badge-text-color: var(--red-color);
+  --badge-border-color: rgb(244 63 94 / 0.2);
+}
+
+.color-blue {
+  --badge-color: rgb(59 130 246 / 0.2);
+  --badge-text-color: var(--blue-color);
+  --badge-border-color: rgb(59 130 246 / 0.2);
+}
