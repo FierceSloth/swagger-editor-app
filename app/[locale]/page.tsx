@@ -1,4 +1,4 @@
-import { redirect } from '@/i18n/navigation';
+import { redirect } from '@shared/config/i18n/navigation';
 
 interface Props {
   params: Promise<{

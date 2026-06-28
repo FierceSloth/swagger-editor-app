@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { IBM_Plex_Sans, Space_Grotesk } from 'next/font/google';
-import { routing } from '@/i18n/routing';
+import { routing } from '@shared/config/i18n/routing';
 import { ArcBackground } from '@/shared/ui/arc-background';
 
 import '@/app/styles/style.scss';
