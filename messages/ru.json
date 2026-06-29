@@ -6,10 +6,23 @@
     "title": "О проекте"
   },
   "Login": {
-    "title": "Вход"
+    "title": "Вход",
+    "subtitle": "Введите ваши данные для доступа к ядру AURA.",
+    "emailLabel": "Адрес электронной почты",
+    "passcodeLabel": "Пароль",
+    "submitButton": "ВОЙТИ",
+    "switchText": "Нет аккаунта?",
+    "switchLink": "Регистрация"
   },
   "Register": {
-    "title": "Регистрация"
+    "title": "Регистрация",
+    "subtitle": "Создайте своё защищённое присутствие в сети AURA.",
+    "emailLabel": "Адрес электронной почты",
+    "passcodeLabel": "Пароль",
+    "confirmPasscodeLabel": "Подтвердите пароль",
+    "submitButton": "ЗАРЕГИСТРИРОВАТЬСЯ",
+    "switchText": "Уже есть аккаунт?",
+    "switchLink": "Войти"
   },
   "NotFound": {
     "title": "Не найдено"

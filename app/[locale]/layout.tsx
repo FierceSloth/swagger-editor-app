@@ -1,10 +1,12 @@
+import { ArcBackground } from '@/shared/ui/arc-background';
+import { routing } from '@shared/config/i18n/routing';
 import type { Metadata } from 'next';
-import type { ReactNode } from 'react';
-import { notFound } from 'next/navigation';
 import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { IBM_Plex_Sans, Space_Grotesk } from 'next/font/google';
-import { routing } from '@shared/config/i18n/routing';
-import { ArcBackground } from '@/shared/ui/arc-background';
+import { notFound } from 'next/navigation';
+import type { ReactNode } from 'react';
+
+import styles from '../app.module.scss';
 
 import '@/app/styles/style.scss';
 
@@ -42,7 +44,9 @@ export default async function RootLayout({ children, params }: Props) {
     <html lang={locale} className={`${ibmPlexSans.variable} ${spaceGrotesk.variable}`}>
       <body>
         <ArcBackground />
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider>
+          <main className={styles.container}>{children}</main>
+        </NextIntlClientProvider>
       </body>
     </html>
   );
