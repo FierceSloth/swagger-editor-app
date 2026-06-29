@@ -16,5 +16,12 @@
   },
   "History": {
     "title": "History"
+  },
+  "Header": {
+    "about": "About",
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "history": "History",
+    "signOut": "Sign Out"
   }
 }

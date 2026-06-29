@@ -1,0 +1,35 @@
+.header {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--bg-surface-3);
+  padding: 10px 46px;
+  font-family: var(--font-ui);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  h1 {
+    font-size: 20px;
+    font-weight: 500;
+    span {
+      font-weight: 300;
+      color: var(--text-tech);
+    }
+  }
+}
+
+.block_right,
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav {
+  font-weight: 500;
+  font-size: 14px;
+}

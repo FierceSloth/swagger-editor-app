@@ -7,6 +7,7 @@ import { routing } from '@shared/config/i18n/routing';
 import { ArcBackground } from '@/shared/ui/arc-background';
 
 import '@/app/styles/style.scss';
+import { Header } from '@/widgets/header';
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -42,7 +43,10 @@ export default async function RootLayout({ children, params }: Props) {
     <html lang={locale} className={`${ibmPlexSans.variable} ${spaceGrotesk.variable}`}>
       <body>
         <ArcBackground />
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider>
+          <Header />
+          {children}
+        </NextIntlClientProvider>
       </body>
     </html>
   );
