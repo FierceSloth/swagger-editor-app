@@ -44,7 +44,8 @@
     "proxy.ts",
     "app",
     "next.config.ts",
-    "vitest.config.ts"
+    "vitest.config.ts",
+    "vitest.setup.ts"
   ],
   "exclude": ["node_modules"]
 }

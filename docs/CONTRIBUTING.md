@@ -14,27 +14,28 @@
 Мы используем иерархическую систему веток и префикс `RSS-SE` (RS School Swagger Editor) для связи с Trello.
 
 ### Иерархия веток:
+
 1. `main` — продакшен.
 2. `develop` — основная ветка разработки (интеграция фич).
 3. `feature/NAME` — ветка для крупной фичи (Epic). Создается от `develop`. Ментор проверяет эту ветку перед вливанием в `develop`.
 4. `story/RSS-SE-ID_description` — ветка для конкретной задачи (Story/Task) в рамках фичи. Создается от `feature/NAME` и вливается обратно в `feature/NAME`.
 
 **Формат рабочих веток:**
-`story/RSS-SE-ID_description` (также могут быть `fix/`, `chore/` и т.д.)
+`story/RSS-SE-ID_description`
 
-- **type**: Тип изменений (`story`, `fix`, `refactor` и т.д.)
 - **RSS-SE-ID**: ID задачи из доски (например, `RSS-SE-25`).
 - **RSS-CORE-00**: Если у задачи нет ID, используем `RSS-CORE-00`.
-- **_description**: Описание задачи.
+- **\_description**: Описание задачи.
   - **Стиль:** `camelCase` (слитное написание, каждое слово с большой буквы, кроме первого).
   - **Грамматика:** Imperative Mood + Present Tense (как в коммитах).
-  - *Пример:* ✅`addLoginLayout`, а не ❌`addingLoginLayout` или ❌`added-login-layout`.
+  - _Пример:_ ✅`addLoginLayout`, а не ❌`addingLoginLayout` или ❌`added-login-layout`.
 
 **Примеры:**
+
 - ✅ `feature/auth` (Глобальная фича)
 - ✅ `story/RSS-SE-14_addLoginLayout` (Задача №14: Добавить верстку логина, вливается в `feature/auth`)
-- ✅ `fix/RSS-SE-05_fixHeaderResponsive` (Фикс №5: Починить адаптив хедера, вливается в `feature/auth`)
-- ✅ `chore/RSS-CORE-00_initProjectStructure` (Инициализация структуры)
+- ✅ `story/RSS-SE-05_fixHeaderResponsive` (Фикс №5: Починить адаптив хедера, вливается в `feature/auth`)
+- ✅ `story/RSS-CORE-00_initProjectStructure` (Инициализация структуры)
 
 ---
 
@@ -52,38 +53,54 @@
 ### Типы коммитов и примеры:
 
 #### `init:`
+
 Используется для начала проекта или таска.
+
 - `init: start project setup`
 
 #### `feat:`
+
 Реализованная новая функциональность.
+
 - `feat: add basic page layout`
 - `feat: implement request to API`
 
 #### `fix:`
+
 Исправление ошибки в ранее реализованной функциональности.
+
 - `fix: implement correct loading data`
 - `fix: relayout header for firefox`
 
 #### `refactor:`
+
 Улучшение кода без смены логики.
+
 - `refactor: change structure of the project`
 - `refactor: rename vars for better readability`
 
 #### `docs:`
+
 Изменения в документации.
+
 - `docs: update readme with additional information`
 
 #### `style:`
+
 Изменения стиля (пробелы, форматирование).
+
 - `style: format code with prettier`
 
 #### `chore:`
+
 Конфиги, сборка.
+
 - `chore: add .editorconfig file`
 
 #### `test:`
+
 Тестирование
+
 - `test: coverage game widget with unit tests`
 
 ---
@@ -98,15 +115,17 @@
 **Формат:**
 `type: RSS-SE-ID description`
 
-*(GitHub автоматически добавит номер PR `(#ID)` в конец заголовка финального коммита)*
+_(GitHub автоматически добавит номер PR `(#ID)` в конец заголовка финального коммита)_
 
 **Правила:**
+
 1. **Если есть задача в Trello:** Используем реальный ID (например `RSS-SE-25`).
 2. **Если задачи нет (глобальный фикс/настройка):** Используем `RSS-CORE-00`.
 
 **Примеры (как называть PR):**
+
 - ✅ `feat: RSS-SE-25 implement login form logic`
-  *(В истории станет: `feat: RSS-SE-25 implement login form logic (#26)`)*
+  _(В истории станет: `feat: RSS-SE-25 implement login form logic (#26)`)_
 - ✅ `fix: RSS-SE-12 fix header styles on mobile`
 - ✅ `docs: RSS-CORE-00 update git flow documentation`
 - ✅ `chore: RSS-CORE-00 setup eslint and prettier`
@@ -119,10 +138,12 @@
 **Мы НЕ оставляем этот список.**
 
 **Как правильно:**
+
 1. Удалите список промежуточных коммитов (`feat:...`, `fix:...`, `chore:...`...).
 2. Оставьте краткий маркированный список реально сделанных изменений (можно взять из Summary вашего PR и изменить под стиль).
 
 **Пример хорошего описания:**
+
 ```text
 - Create LoginForm component
 - Add API service for auth

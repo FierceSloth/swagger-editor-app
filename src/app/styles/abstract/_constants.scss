@@ -1,0 +1,38 @@
+:root {
+  --radius-pill: 100%;
+  --radius-card: 24px;
+  --radius-large: 48px;
+
+  --bg-base: #030407;
+  --bg-surface-1: rgba(255, 255, 255, 0.02);
+  --bg-surface-2: rgba(255, 255, 255, 0.05);
+  --bg-surface-3: rgba(255, 255, 255, 0.1);
+  --bg-surface-4: rgba(255, 255, 255, 0.2);
+  --bg-accent: #ffffff;
+
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.5);
+  --text-tech: rgba(255, 255, 255, 0.3);
+  --text-inverse: #000;
+
+  --font-ui: var(--font-space-grotesk), sans-serif;
+
+  --green-color: rgb(52 211 153 / 1);
+  --red-color: rgb(251 113 133 / 0.7);
+  --blue-color: rgb(96 165 250 / 1);
+
+  --glow-color: 255, 255, 255;
+  --shader-core: #ffffff;
+  --shader-fringe: #4a88ff;
+
+  --z-behind: -1;
+  --z-base: 1;
+  --z-dropdown: 10;
+  --z-sticky: 100;
+  --z-modal: 1000;
+  --z-popover: 2000;
+}
+
+html[lang='ru'] {
+  --font-ui: var(--font-ibm-plex), sans-serif;
+}
