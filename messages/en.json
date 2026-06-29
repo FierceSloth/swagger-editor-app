@@ -6,10 +6,23 @@
     "title": "About"
   },
   "Login": {
-    "title": "Sign In"
+    "title": "Sign In",
+    "subtitle": "Enter your credentials to access the AURA core.",
+    "emailLabel": "Email Address",
+    "passcodeLabel": "Access Passcode",
+    "submitButton": "SIGN IN",
+    "switchText": "Don't have an account?",
+    "switchLink": "Sign Up"
   },
   "Register": {
-    "title": "Sign Up"
+    "title": "Sign Up",
+    "subtitle": "Establish your secure presence within the AURA network.",
+    "emailLabel": "Email Address",
+    "passcodeLabel": "Access Passcode",
+    "confirmPasscodeLabel": "Confirm Passcode",
+    "submitButton": "SIGN UP",
+    "switchText": "Already have an account?",
+    "switchLink": "Sign In"
   },
   "NotFound": {
     "title": "Not Found"

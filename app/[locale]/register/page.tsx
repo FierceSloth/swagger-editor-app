@@ -1,7 +1,1 @@
-import { getTranslations } from 'next-intl/server';
-
-export default async function RegisterPage() {
-  const t = await getTranslations('Register');
-
-  return <h1>{t('title')}</h1>;
-}
+export { RegisterPage as default } from '@pages/register';
