@@ -3,9 +3,5 @@ import { getTranslations } from 'next-intl/server';
 export default async function AboutPage() {
   const t = await getTranslations('About');
 
-  return (
-    <main>
-      <h1>{t('title')}</h1>
-    </main>
-  );
+  return <h1>{t('title')}</h1>;
 }
