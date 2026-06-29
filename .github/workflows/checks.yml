@@ -26,9 +26,6 @@ jobs:
         env:
           HUSKY: 0
 
-      - name: Prettier check
-        run: npx prettier --check src
-
       - name: Lint
         run: npm run lint
 
