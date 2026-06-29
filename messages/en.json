@@ -17,9 +17,7 @@
       "invalidEmail": "Invalid email format",
       "passwordMinLength": "Min 8 characters",
       "passwordNeedLetter": "Need at least 1 letter",
-      "passwordNeedNumber": "Need at least 1 number",
-      "passwordNeedSpecial": "Need 1 special character",
-      "passwordInvalidCharacters": "Invalid characters"
+      "passwordNeedNumber": "Need at least 1 number"
     }
   },
   "Register": {
@@ -36,8 +34,6 @@
       "passwordMinLength": "Min 8 characters",
       "passwordNeedLetter": "Need at least 1 letter",
       "passwordNeedNumber": "Need at least 1 number",
-      "passwordNeedSpecial": "Need 1 special character",
-      "passwordInvalidCharacters": "Invalid characters",
       "passcodeMismatch": "Passwords do not match"
     }
   },

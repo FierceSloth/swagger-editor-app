@@ -5,10 +5,8 @@ export const loginSchema = z.object({
   password: z
     .string()
     .min(8, 'passwordMinLength')
-    .regex(/[a-zA-Z]/, 'passwordNeedLetter')
-    .regex(/\d/, 'passwordNeedNumber')
-    .regex(/[@$!%*#?&]/, 'passwordNeedSpecial')
-    .regex(/^[A-Za-z\d@$!%*#?&]+$/, 'passwordInvalidCharacters'),
+    .regex(/[a-zA-Zа-яА-ЯёЁ]/, 'passwordNeedLetter')
+    .regex(/\d/, 'passwordNeedNumber'),
 });
 
 export const registerSchema = loginSchema
