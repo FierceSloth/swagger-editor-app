@@ -12,7 +12,14 @@
     "passcodeLabel": "Пароль",
     "submitButton": "ВОЙТИ",
     "switchText": "Нет аккаунта?",
-    "switchLink": "Регистрация"
+    "switchLink": "Регистрация",
+    "errors": {
+      "invalidEmail": "Неверный формат email",
+      "passwordMinLength": "Минимум 8 символов",
+      "passwordNeedLetter": "Нужна хотя бы 1 буква",
+      "passwordNeedNumber": "Нужна хотя бы 1 цифра",
+      "passwordNeedSpecial": "Нужен хотя бы 1 специальный символ"
+    }
   },
   "Register": {
     "title": "Регистрация",
@@ -22,7 +29,15 @@
     "confirmPasscodeLabel": "Подтвердите пароль",
     "submitButton": "ЗАРЕГИСТРИРОВАТЬСЯ",
     "switchText": "Уже есть аккаунт?",
-    "switchLink": "Войти"
+    "switchLink": "Войти",
+    "errors": {
+      "invalidEmail": "Неверный формат email",
+      "passwordMinLength": "Минимум 8 символов",
+      "passwordNeedLetter": "Нужна хотя бы 1 буква",
+      "passwordNeedNumber": "Нужна хотя бы 1 цифра",
+      "passwordNeedSpecial": "Нужен хотя бы 1 специальный символ",
+      "passcodeMismatch": "Пароли не совпадают"
+    }
   },
   "NotFound": {
     "title": "Не найдено"

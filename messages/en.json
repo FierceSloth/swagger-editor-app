@@ -12,7 +12,14 @@
     "passcodeLabel": "Access Passcode",
     "submitButton": "SIGN IN",
     "switchText": "Don't have an account?",
-    "switchLink": "Sign Up"
+    "switchLink": "Sign Up",
+    "errors": {
+      "invalidEmail": "Invalid email format",
+      "passwordMinLength": "Min 8 characters",
+      "passwordNeedLetter": "Need at least 1 letter",
+      "passwordNeedNumber": "Need at least 1 number",
+      "passwordNeedSpecial": "Need at least 1 special character"
+    }
   },
   "Register": {
     "title": "Sign Up",
@@ -22,7 +29,15 @@
     "confirmPasscodeLabel": "Confirm Passcode",
     "submitButton": "SIGN UP",
     "switchText": "Already have an account?",
-    "switchLink": "Sign In"
+    "switchLink": "Sign In",
+    "errors": {
+      "invalidEmail": "Invalid email format",
+      "passwordMinLength": "Min 8 characters",
+      "passwordNeedLetter": "Need at least 1 letter",
+      "passwordNeedNumber": "Need at least 1 number",
+      "passcodeMismatch": "Passwords do not match",
+      "passwordNeedSpecial": "Need at least 1 special character"
+    }
   },
   "NotFound": {
     "title": "Not Found"
