@@ -1,0 +1,21 @@
+.switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 20px;
+}
+
+.button {
+  font-weight: 400;
+  padding: 8px;
+
+  font-size: 12px;
+}
+
+.separator {
+  color: var(--text-secondary);
+}
+
+.active {
+  color: var(--text-primary);
+}

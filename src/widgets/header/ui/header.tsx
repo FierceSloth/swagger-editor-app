@@ -5,6 +5,7 @@ import Image from 'next/image';
 
 import styles from './header.module.scss';
 import { ButtonLink } from '@/shared/ui/button-link';
+import { LanguageSwitcher } from '@/features/language-switcher';
 
 export async function Header() {
   const t = await getTranslations('Header');
@@ -25,6 +26,8 @@ export async function Header() {
         </nav>
       </div>
       <div className={styles.actions}>
+        <LanguageSwitcher />
+
         <ButtonLink variant="secondary" href={ROUTES.LOGIN}>
           {t('signIn')}
         </ButtonLink>
