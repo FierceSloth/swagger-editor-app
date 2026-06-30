@@ -17,7 +17,8 @@
       "invalidEmail": "Неверный формат email",
       "passwordMinLength": "Минимум 8 символов",
       "passwordNeedLetter": "Нужна хотя бы 1 буква",
-      "passwordNeedNumber": "Нужна хотя бы 1 цифра"
+      "passwordNeedNumber": "Нужна хотя бы 1 цифра",
+      "passwordNeedSpecial": "Нужен хотя бы 1 специальный символ"
     }
   },
   "Register": {
@@ -34,6 +35,7 @@
       "passwordMinLength": "Минимум 8 символов",
       "passwordNeedLetter": "Нужна хотя бы 1 буква",
       "passwordNeedNumber": "Нужна хотя бы 1 цифра",
+      "passwordNeedSpecial": "Нужен хотя бы 1 специальный символ",
       "passcodeMismatch": "Пароли не совпадают"
     }
   },
