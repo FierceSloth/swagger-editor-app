@@ -1,12 +1,13 @@
 import { z } from 'zod';
 
 export const loginSchema = z.object({
-  email: z.string().email('invalidEmail'),
+  email: z.email('invalidEmail'),
   password: z
     .string()
     .min(8, 'passwordMinLength')
-    .regex(/[a-zA-Zа-яА-ЯёЁ]/, 'passwordNeedLetter')
-    .regex(/\d/, 'passwordNeedNumber'),
+    .regex(/\p{L}/u, 'passwordNeedLetter')
+    .regex(/\d/, 'passwordNeedNumber')
+    .regex(/[^\p{L}\d]/u, 'passwordNeedSpecial'),
 });
 
 export const registerSchema = loginSchema
