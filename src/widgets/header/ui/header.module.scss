@@ -4,8 +4,7 @@
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid var(--bg-surface-3);
-  padding: 10px 46px;
-  font-family: var(--font-ui);
+  padding: 10px 45px;
 }
 
 .logo {
@@ -32,4 +31,8 @@
 .nav {
   font-weight: 500;
   font-size: 14px;
+  transition: transform 0.2s;
+  &:hover {
+    transform: scale(1.05);
+  }
 }

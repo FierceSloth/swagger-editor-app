@@ -23,5 +23,9 @@
     "signUp": "Регистрация",
     "history": "История",
     "signOut": "Выйти"
+  },
+  "Footer": {
+    "about": "О проекте",
+    "team": "Создано с ♡ командой GMT+5 Development"
   }
 }

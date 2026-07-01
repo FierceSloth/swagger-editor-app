@@ -23,5 +23,9 @@
     "signUp": "Sign Up",
     "history": "History",
     "signOut": "Sign Out"
+  },
+  "Footer": {
+    "about": "About",
+    "team": "Built with ♡ by team GMT+5 Development"
   }
 }

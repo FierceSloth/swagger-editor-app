@@ -28,7 +28,7 @@ export async function Header() {
       <div className={styles.actions}>
         <LanguageSwitcher />
 
-        <ButtonLink variant="secondary" href={ROUTES.LOGIN}>
+        <ButtonLink variant="primary" href={ROUTES.LOGIN}>
           {t('signIn')}
         </ButtonLink>
         <ButtonLink variant="secondary" href={ROUTES.REGISTER}>
