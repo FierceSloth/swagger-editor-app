@@ -2,16 +2,7 @@
 
 import { redirect } from 'next/navigation';
 import { createClient } from '@/shared/api/supabase/server';
-
-function getFormValue(formData: FormData, key: string): string {
-  const value = formData.get(key);
-
-  if (typeof value !== 'string') {
-    return '';
-  }
-
-  return value.trim();
-}
+import getFormValue from '@/shared/api/utils/form';
 
 export async function signInWithPassword(formData: FormData) {
   const email = getFormValue(formData, 'email');
