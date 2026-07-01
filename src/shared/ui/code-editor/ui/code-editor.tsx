@@ -1,5 +1,6 @@
 'use client';
 
+import type { DataFormat } from '@/shared/types/format';
 import { json } from '@codemirror/lang-json';
 import { yaml } from '@codemirror/lang-yaml';
 import { EditorState } from '@codemirror/state';
@@ -11,7 +12,7 @@ import { editorTheme, syntaxTheme } from '../lib/theme';
 import styles from './code-editor.module.scss';
 
 export interface ICodeEditorProps extends Omit<ReactCodeMirrorProps, 'theme'> {
-  format?: 'json' | 'yaml';
+  format?: DataFormat;
   transparent?: boolean;
   hideLines?: boolean;
   readonly?: boolean;

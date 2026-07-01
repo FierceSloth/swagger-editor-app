@@ -4,6 +4,7 @@ import yaml from 'yaml';
 export function convertToJson(text: string): string | null {
   try {
     const jsObject = yaml.parse(text) as unknown;
+    if (typeof jsObject !== 'object' || jsObject === null) return null;
     return JSON.stringify(jsObject, null, 2);
   } catch {
     return null;
@@ -12,7 +13,8 @@ export function convertToJson(text: string): string | null {
 
 export function convertToYaml(text: string): string | null {
   try {
-    const jsObject = JSON.parse(text) as unknown;
+    const jsObject = yaml.parse(text) as unknown;
+    if (typeof jsObject !== 'object' || jsObject === null) return null;
     return yaml.stringify(jsObject);
   } catch {
     return null;

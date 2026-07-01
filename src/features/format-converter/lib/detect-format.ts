@@ -1,20 +1,26 @@
-import type { DataFormat } from '@/shared/types/format';
+import type { DetectedFormat } from '@/shared/types/format';
 import yaml from 'yaml';
 
-export function detectFormat(text: string): DataFormat | 'unknown' {
+export function detectFormat(text: string): DetectedFormat {
+  if (!text.trim()) return 'unknown';
+
   try {
-    const parsed = JSON.parse(text) as object | null;
+    const parsed = JSON.parse(text) as unknown;
     if (typeof parsed === 'object' && parsed !== null) {
       return 'json';
     }
   } catch {
-    // ignore
+    // not JSON
   }
 
   try {
-    yaml.parse(text);
-    return 'yaml';
+    const parsed = yaml.parse(text) as unknown;
+    if (typeof parsed === 'object' && parsed !== null) {
+      return 'yaml';
+    }
   } catch {
-    return 'unknown';
+    // not YAML
   }
+
+  return 'unknown';
 }

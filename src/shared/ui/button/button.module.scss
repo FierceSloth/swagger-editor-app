@@ -20,6 +20,12 @@
   &:active {
     transform: scale(0.95);
   }
+
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: not-allowed;
+  }
 }
 
 .primary {
@@ -53,7 +59,7 @@
   color: var(--text-primary);
 
   border: 1px solid transparent;
-  border-radius: 0.375rem;
+  border-radius: 4px;
 
   padding: 0.25rem 0.75rem;
   transition: all 0.1s;
