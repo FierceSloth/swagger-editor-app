@@ -79,8 +79,8 @@ export const syntaxTheme = syntaxHighlighting(
     { tag: t.strikethrough, textDecoration: 'line-through' },
     { tag: t.link, color: 'var(--text-secondary)', textDecoration: 'underline' },
     { tag: t.heading, fontWeight: 'bold', color: 'var(--text-primary)' },
-    { tag: [t.atom, t.bool, t.special(t.variableName)], color: 'var(--text-primary)' },
-    { tag: [t.processingInstruction, t.string, t.inserted], color: 'var(--green-color)' },
+    { tag: [t.bool, t.special(t.variableName)], color: 'var(--text-primary)' },
+    { tag: [t.processingInstruction, t.string, t.inserted, t.atom, t.literal, t.content], color: 'var(--green-color)' },
     { tag: t.invalid, color: 'var(--red-color)' },
   ])
 );
