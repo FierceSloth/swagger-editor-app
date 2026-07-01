@@ -16,5 +16,10 @@
   },
   "History": {
     "title": "Аналитика"
+  },
+  "SwaggerEditor": {
+    "format": "ФОРМАТ:",
+    "convert_to": "Конвертировать в {format}",
+    "cannot_convert": "Не конвертируется"
   }
 }
