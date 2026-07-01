@@ -1,6 +1,7 @@
+import type { DataFormat } from '@/shared/types/format';
 import yaml from 'yaml';
 
-export function detectFormat(text: string): 'json' | 'yaml' | 'unknown' {
+export function detectFormat(text: string): DataFormat | 'unknown' {
   try {
     const parsed = JSON.parse(text) as object | null;
     if (typeof parsed === 'object' && parsed !== null) {
