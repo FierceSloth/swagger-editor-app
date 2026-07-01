@@ -2,10 +2,12 @@ import { getTranslations } from 'next-intl/server';
 import { Link } from '@/shared/config/i18n/navigation';
 import { ROUTES } from '@/shared/config/routes';
 import Image from 'next/image';
-
-import styles from './header.module.scss';
 import { ButtonLink } from '@/shared/ui/button-link';
 import { LanguageSwitcher } from '@/features/language-switcher';
+import { isAuthenticated } from '@/shared/lib/auth/is-authenticated';
+import { Button } from '@/shared/ui/button';
+
+import styles from './header.module.scss';
 
 export async function Header() {
   const t = await getTranslations('Header');
@@ -28,12 +30,23 @@ export async function Header() {
       <div className={styles.actions}>
         <LanguageSwitcher />
 
-        <ButtonLink variant="primary" href={ROUTES.LOGIN}>
-          {t('signIn')}
-        </ButtonLink>
-        <ButtonLink variant="secondary" href={ROUTES.REGISTER}>
-          {t('signUp')}
-        </ButtonLink>
+        {isAuthenticated ? (
+          <>
+            <ButtonLink variant="primary" href={ROUTES.HISTORY}>
+              {t('history')}
+            </ButtonLink>
+            <Button variant="secondary">{t('signOut')}</Button>
+          </>
+        ) : (
+          <>
+            <ButtonLink variant="primary" href={ROUTES.LOGIN}>
+              {t('signIn')}
+            </ButtonLink>
+            <ButtonLink variant="secondary" href={ROUTES.REGISTER}>
+              {t('signUp')}
+            </ButtonLink>
+          </>
+        )}
       </div>
     </header>
   );
