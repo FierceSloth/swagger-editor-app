@@ -41,6 +41,7 @@ export function CodeEditor({
       )}
     >
       <CodeMirror
+        {...props}
         theme="none"
         extensions={extensions}
         editable={!readonly}
@@ -48,7 +49,6 @@ export function CodeEditor({
           lineNumbers: !hideLines,
           foldGutter: !hideLines,
         }}
-        {...props}
       />
     </div>
   );
