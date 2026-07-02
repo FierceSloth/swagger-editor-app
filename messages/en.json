@@ -22,6 +22,7 @@
     "convert_to": "Convert to {format}",
     "cannot_convert": "Cannot convert",
     "valid_schema": "VALID SCHEMA",
-    "invalid_schema": "INVALID SCHEMA"
+    "invalid_schema": "INVALID SCHEMA",
+    "validation_feedback": "VALIDATION FEEDBACK ({errors} ERRORS, {warnings} WARNINGS)"
   }
 }

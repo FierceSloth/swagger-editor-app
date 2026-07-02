@@ -3,7 +3,7 @@
 import { useState } from 'react';
 
 import { convertFormat, detectFormat, FormatToggle } from '@/features/format-converter';
-import { openapiLinter, ValidationStatus } from '@/features/schema-validator';
+import { openapiLinter, ValidationFeedback, ValidationStatus } from '@/features/schema-validator';
 import type { DataFormat, DetectedFormat } from '@/shared/types/format';
 import { CodeEditor } from '@/shared/ui/code-editor';
 
@@ -50,6 +50,7 @@ export function SwaggerEditor({ value: externalValue, onChange }: IProps) {
         className={styles.editor}
         extensions={[openapiLinter]}
       />
+      <ValidationFeedback errorsCount={0} warningsCount={0} />
     </div>
   );
 }

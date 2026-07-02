@@ -22,6 +22,7 @@
     "convert_to": "Конвертировать в {format}",
     "cannot_convert": "Не конвертируется",
     "valid_schema": "ВАЛИДНАЯ СХЕМА",
-    "invalid_schema": "НЕ ВАЛИДНАЯ СХЕМЫ"
+    "invalid_schema": "ОШИБКА СХЕМЫ",
+    "validation_feedback": "РЕЗУЛЬТАТЫ ВАЛИДАЦИИ (ОШИБОК: {errors}, ПРЕДУПРЕЖДЕНИЙ: {warnings})"
   }
 }
