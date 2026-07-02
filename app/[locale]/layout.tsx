@@ -1,10 +1,10 @@
-import type { Metadata } from 'next';
-import type { ReactNode } from 'react';
-import { notFound } from 'next/navigation';
-import { NextIntlClientProvider, hasLocale } from 'next-intl';
-import { IBM_Plex_Sans, Space_Grotesk } from 'next/font/google';
-import { routing } from '@shared/config/i18n/routing';
 import { ArcBackground } from '@/shared/ui/arc-background';
+import { routing } from '@shared/config/i18n/routing';
+import type { Metadata } from 'next';
+import { NextIntlClientProvider, hasLocale } from 'next-intl';
+import { IBM_Plex_Sans, JetBrains_Mono, Space_Grotesk } from 'next/font/google';
+import { notFound } from 'next/navigation';
+import type { ReactNode } from 'react';
 
 import '@/app/styles/style.scss';
 
@@ -19,6 +19,12 @@ const ibmPlexSans = IBM_Plex_Sans({
   weight: ['200', '300', '400', '500', '600', '700'],
   display: 'swap',
   variable: '--font-ibm-plex',
+});
+
+const jetBrainsMono = JetBrains_Mono({
+  subsets: ['latin', 'cyrillic'],
+  display: 'swap',
+  variable: '--font-jetbrains-mono',
 });
 
 interface Props {
@@ -39,7 +45,7 @@ export default async function RootLayout({ children, params }: Props) {
   }
 
   return (
-    <html lang={locale} className={`${ibmPlexSans.variable} ${spaceGrotesk.variable}`}>
+    <html lang={locale} className={`${ibmPlexSans.variable} ${spaceGrotesk.variable} ${jetBrainsMono.variable}`}>
       <body>
         <ArcBackground />
         <NextIntlClientProvider>{children}</NextIntlClientProvider>
