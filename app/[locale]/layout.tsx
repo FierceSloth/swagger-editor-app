@@ -6,6 +6,9 @@ import { IBM_Plex_Sans, Space_Grotesk } from 'next/font/google';
 import { notFound } from 'next/navigation';
 import type { ReactNode } from 'react';
 
+import { getCurrentUser } from '@/shared/api/supabase/get-current-user';
+import { AuthProvider } from '@/features/auth/model/auth-provider';
+
 import styles from '../app.module.scss';
 
 import '@/app/styles/style.scss';
@@ -40,12 +43,16 @@ export default async function RootLayout({ children, params }: Props) {
     notFound();
   }
 
+  const user = await getCurrentUser();
+
   return (
     <html lang={locale} className={`${ibmPlexSans.variable} ${spaceGrotesk.variable}`}>
       <body>
         <ArcBackground />
         <NextIntlClientProvider>
-          <main className={styles.container}>{children}</main>
+          <AuthProvider initialUser={user}>
+            <main className={styles.container}>{children}</main>
+          </AuthProvider>
         </NextIntlClientProvider>
       </body>
     </html>
