@@ -26,7 +26,13 @@ export function CodeEditor({
   className,
   ...props
 }: ICodeEditorProps) {
-  const extensions = [format === 'json' ? json() : yaml(), editorTheme, syntaxTheme, EditorState.readOnly.of(readonly)];
+  const baseExtensions = [
+    format === 'json' ? json() : yaml(),
+    editorTheme,
+    syntaxTheme,
+    EditorState.readOnly.of(readonly),
+  ];
+  const extensions = [props.extensions || [], ...baseExtensions];
 
   return (
     <div
