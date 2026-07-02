@@ -20,6 +20,8 @@
   "SwaggerEditor": {
     "format": "ФОРМАТ:",
     "convert_to": "Конвертировать в {format}",
-    "cannot_convert": "Не конвертируется"
+    "cannot_convert": "Не конвертируется",
+    "valid_schema": "ВАЛИДНАЯ СХЕМА",
+    "invalid_schema": "НЕ ВАЛИДНАЯ СХЕМЫ"
   }
 }
