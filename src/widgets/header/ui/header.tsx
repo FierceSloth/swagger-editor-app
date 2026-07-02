@@ -14,7 +14,7 @@ export async function Header() {
 
   return (
     <header className={styles.header}>
-      <div className={styles.blockRight}>
+      <div className={styles.blockLeft}>
         <Link href={ROUTES.HOME}>
           <div className={styles.logo}>
             <Image src="/logo.png" alt="AURA Editor" width={40} height={40} />
@@ -32,17 +32,19 @@ export async function Header() {
 
         {isAuthenticated ? (
           <>
-            <ButtonLink variant="primary" href={ROUTES.HISTORY}>
+            <ButtonLink variant="primary" href={ROUTES.HISTORY} className={styles.button}>
               {t('history')}
             </ButtonLink>
-            <Button variant="secondary">{t('signOut')}</Button>
+            <Button variant="secondary" className={styles.button}>
+              {t('signOut')}
+            </Button>
           </>
         ) : (
           <>
-            <ButtonLink variant="primary" href={ROUTES.LOGIN}>
+            <ButtonLink variant="primary" href={ROUTES.LOGIN} className={styles.button}>
               {t('signIn')}
             </ButtonLink>
-            <ButtonLink variant="secondary" href={ROUTES.REGISTER}>
+            <ButtonLink variant="secondary" href={ROUTES.REGISTER} className={styles.button}>
               {t('signUp')}
             </ButtonLink>
           </>

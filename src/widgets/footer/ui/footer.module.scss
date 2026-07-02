@@ -2,21 +2,30 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 45px;
+  padding: 1rem 45px;
   border-top: 1px solid var(--bg-surface-3);
-  font-size: 14px;
+  font-size: 1rem;
   color: var(--text-tech);
+  position: fixed;
+  width: 100%;
+  backdrop-filter: blur(12px);
+  bottom: 0;
 }
 
 .about,
 .schoolName {
   display: inline-block;
   transition: transform 0.2s;
+  font-size: 1rem;
+  color: var(--text-tech);
   &:hover {
     transform: scale(1.05);
   }
 }
 
-.schoolName {
-  margin-left: 5px;
+.icon {
+  height: 14px;
+  width: 14px;
+  margin: 0 5px;
+  stroke-width: 2.5;
 }

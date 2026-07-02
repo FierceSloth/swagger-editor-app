@@ -7,13 +7,14 @@
 
 .button {
   font-weight: 400;
-  padding: 8px;
-
-  font-size: 12px;
+  padding: 4px;
+  font-size: 11px;
+  color: var(--text-tech);
+  font-family: var(--font-mono);
 }
 
 .separator {
-  color: var(--text-secondary);
+  color: var(--text-tech);
 }
 
 .active {

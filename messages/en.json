@@ -26,6 +26,7 @@
   },
   "Footer": {
     "about": "About",
-    "team": "Built with ♡ by team GMT+5 Development"
+    "team1": "Built with",
+    "team2": "by team GMT+5 Development"
   }
 }

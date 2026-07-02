@@ -26,6 +26,7 @@
   },
   "Footer": {
     "about": "О проекте",
-    "team": "Создано с ♡ командой GMT+5 Development"
+    "team1": "Создано с",
+    "team2": "командой GMT+5 Development"
   }
 }
