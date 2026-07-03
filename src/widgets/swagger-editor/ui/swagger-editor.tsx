@@ -21,7 +21,7 @@ export function SwaggerEditor({ value = '', onChange, onValidationChange }: IPro
   const [currentFormat, setCurrentFormat] = useState<DetectedFormat>('yaml');
 
   const [validation, setValidation] = useState({ errors: 0, warnings: 0 });
-  const isValid = validation.errors === 0 && currentFormat !== 'unknown';
+  const isValid = validation.errors === 0 && currentFormat !== 'unknown' && value.trim().length > 0;
 
   useEffect(() => {
     onValidationChange?.(isValid);
