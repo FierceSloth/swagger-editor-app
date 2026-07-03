@@ -1,11 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import { convertFormat, detectFormat, FormatToggle } from '@/features/format-converter';
 import { openapiLinter, ValidationFeedback, ValidationStatus } from '@/features/schema-validator';
 import type { DataFormat, DetectedFormat } from '@/shared/types/format';
 import { CodeEditor } from '@/shared/ui/code-editor';
+import { forEachDiagnostic } from '@codemirror/lint';
+import type { ViewUpdate } from '@uiw/react-codemirror';
 
 import styles from './swagger-editor.module.scss';
 
@@ -17,6 +19,8 @@ interface IProps {
 export function SwaggerEditor({ value: externalValue, onChange }: IProps) {
   const [currentFormat, setCurrentFormat] = useState<DetectedFormat>('yaml');
   const [localValue, setLocalValue] = useState(externalValue || '');
+
+  const [validation, setValidation] = useState({ errors: 0, warnings: 0 });
 
   const onFormatToggle = (newFormat: DataFormat) => {
     if (newFormat === currentFormat) return;
@@ -36,11 +40,27 @@ export function SwaggerEditor({ value: externalValue, onChange }: IProps) {
     onChange?.(newText);
   };
 
+  const handleEditorUpdate = useCallback((viewUpdate: ViewUpdate) => {
+    let errors = 0;
+    let warnings = 0;
+    forEachDiagnostic(viewUpdate.state, (diag) => {
+      if (diag.severity === 'error') errors++;
+      if (diag.severity === 'warning') warnings++;
+    });
+
+    setValidation((prev) => {
+      if (prev.errors !== errors || prev.warnings !== warnings) {
+        return { errors, warnings };
+      }
+      return prev;
+    });
+  }, []);
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.toolbar}>
         <FormatToggle format={currentFormat} onToggle={onFormatToggle} />
-        <ValidationStatus isValid={false} />
+        <ValidationStatus isValid={validation.errors === 0 && currentFormat !== 'unknown'} />
       </div>
       <CodeEditor
         value={localValue}
@@ -49,8 +69,9 @@ export function SwaggerEditor({ value: externalValue, onChange }: IProps) {
         format={currentFormat === 'unknown' ? undefined : currentFormat}
         className={styles.editor}
         extensions={[openapiLinter]}
+        onUpdate={handleEditorUpdate}
       />
-      <ValidationFeedback errorsCount={0} warningsCount={0} />
+      <ValidationFeedback errorsCount={validation.errors} warningsCount={validation.warnings} />
     </div>
   );
 }
