@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import { convertFormat, detectFormat, FormatToggle } from '@/features/format-converter';
 import { openapiLinter, ValidationFeedback, ValidationStatus } from '@/features/schema-validator';
@@ -14,21 +14,25 @@ import styles from './swagger-editor.module.scss';
 interface IProps {
   value?: string;
   onChange?: (value: string) => void;
+  onValidationChange?: (isValid: boolean) => void;
 }
 
-export function SwaggerEditor({ value: externalValue, onChange }: IProps) {
+export function SwaggerEditor({ value = '', onChange, onValidationChange }: IProps) {
   const [currentFormat, setCurrentFormat] = useState<DetectedFormat>('yaml');
-  const [localValue, setLocalValue] = useState(externalValue || '');
 
   const [validation, setValidation] = useState({ errors: 0, warnings: 0 });
+  const isValid = validation.errors === 0 && currentFormat !== 'unknown';
+
+  useEffect(() => {
+    onValidationChange?.(isValid);
+  }, [validation.errors, currentFormat, onValidationChange, isValid]);
 
   const onFormatToggle = (newFormat: DataFormat) => {
     if (newFormat === currentFormat) return;
-    const convertedText = convertFormat(localValue, newFormat);
+    const convertedText = convertFormat(value, newFormat);
 
     if (convertedText !== null) {
       setCurrentFormat(newFormat);
-      setLocalValue(convertedText);
       onChange?.(convertedText);
     }
   };
@@ -36,7 +40,6 @@ export function SwaggerEditor({ value: externalValue, onChange }: IProps) {
   const onTextChange = (newText: string) => {
     const detected = detectFormat(newText);
     setCurrentFormat(detected);
-    setLocalValue(newText);
     onChange?.(newText);
   };
 
@@ -60,10 +63,10 @@ export function SwaggerEditor({ value: externalValue, onChange }: IProps) {
     <div className={styles.wrapper}>
       <div className={styles.toolbar}>
         <FormatToggle format={currentFormat} onToggle={onFormatToggle} />
-        <ValidationStatus isValid={validation.errors === 0 && currentFormat !== 'unknown'} />
+        <ValidationStatus isValid={isValid} />
       </div>
       <CodeEditor
-        value={localValue}
+        value={value}
         height="100%"
         onChange={onTextChange}
         format={currentFormat === 'unknown' ? undefined : currentFormat}
