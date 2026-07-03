@@ -2,6 +2,11 @@
   "name": "swagger-editor-app",
   "version": "0.1.0",
   "private": true,
+  "browser": {
+    "fs": false,
+    "path": false,
+    "url": false
+  },
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": [
       "prettier --write",
@@ -13,7 +18,7 @@
   },
   "scripts": {
     "dev": "next dev --webpack",
-    "build": "next build",
+    "build": "next build --webpack",
     "start": "next start",
     "prepare": "husky",
     "format": "prettier --write src",
