@@ -16,5 +16,10 @@
   },
   "History": {
     "title": "History"
+  },
+  "SwaggerEditor": {
+    "format": "FORMAT:",
+    "convert_to": "Convert to {format}",
+    "cannot_convert": "Cannot convert"
   }
 }
