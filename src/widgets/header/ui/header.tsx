@@ -1,11 +1,10 @@
 import { getTranslations } from 'next-intl/server';
-import { Link } from '@/shared/config/i18n/navigation';
-import { ROUTES } from '@/shared/config/routes';
-import Image from 'next/image';
-import { ButtonLink } from '@/shared/ui/button-link';
 import { LanguageSwitcher } from '@/features/language-switcher';
 import { isAuthenticated } from '@/shared/lib/auth/is-authenticated';
-import { Button } from '@/shared/ui/button';
+import { Logo } from './logo';
+import { PageNavigation } from './page-navigation';
+import { PublicNavigation } from './public-navigation';
+import { PrivateNavigation } from './private-navigation';
 
 import styles from './header.module.scss';
 
@@ -15,39 +14,16 @@ export async function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.blockLeft}>
-        <Link href={ROUTES.HOME}>
-          <div className={styles.logo}>
-            <Image src="/logo.png" alt="AURA Editor" width={40} height={40} />
-            <h1>
-              AURA <span>{'// EDITOR'}</span>
-            </h1>
-          </div>
-        </Link>
-        <nav className={styles.nav}>
-          <Link href={ROUTES.ABOUT}>{t('about')}</Link>
-        </nav>
+        <Logo />
+        <PageNavigation aboutLabel={t('about')} />
       </div>
       <div className={styles.actions}>
         <LanguageSwitcher />
 
         {isAuthenticated ? (
-          <>
-            <ButtonLink variant="primary" href={ROUTES.HISTORY} className={styles.button}>
-              {t('history')}
-            </ButtonLink>
-            <Button variant="secondary" className={styles.button}>
-              {t('signOut')}
-            </Button>
-          </>
+          <PrivateNavigation historyLabel={t('history')} signOutLabel={t('signOut')} />
         ) : (
-          <>
-            <ButtonLink variant="primary" href={ROUTES.LOGIN} className={styles.button}>
-              {t('signIn')}
-            </ButtonLink>
-            <ButtonLink variant="secondary" href={ROUTES.REGISTER} className={styles.button}>
-              {t('signUp')}
-            </ButtonLink>
-          </>
+          <PublicNavigation signInLabel={t('signIn')} signUpLabel={t('signUp')} />
         )}
       </div>
     </header>
