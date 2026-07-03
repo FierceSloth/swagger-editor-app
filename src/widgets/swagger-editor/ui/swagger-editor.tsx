@@ -3,6 +3,7 @@
 import { useState } from 'react';
 
 import { convertFormat, detectFormat, FormatToggle } from '@/features/format-converter';
+import { openapiLinter } from '@/features/schema-validator';
 import type { DataFormat, DetectedFormat } from '@/shared/types/format';
 import { CodeEditor } from '@/shared/ui/code-editor';
 
@@ -46,6 +47,7 @@ export function SwaggerEditor({ value: externalValue, onChange }: IProps) {
         onChange={onTextChange}
         format={currentFormat === 'unknown' ? undefined : currentFormat}
         className={styles.editor}
+        extensions={[openapiLinter]}
       />
     </div>
   );
