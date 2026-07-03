@@ -1,6 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 
-export default async function LoginPage() {
+export default async function Page() {
   const t = await getTranslations('Login');
 
   return (
