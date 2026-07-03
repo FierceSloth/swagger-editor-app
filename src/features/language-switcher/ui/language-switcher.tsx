@@ -14,6 +14,9 @@ export function LanguageSwitcher() {
   const router = useRouter();
   const pathname = usePathname();
 
+  const isEngLang = locale === 'en';
+  const isRusLang = locale === 'ru';
+
   const handleChange = (nextLocale: Locale) => {
     if (nextLocale === locale) {
       return;
@@ -28,18 +31,18 @@ export function LanguageSwitcher() {
     <div className={styles.switcher}>
       <Button
         variant="ghost"
-        className={clsx(styles.button, locale === 'en' && styles.active)}
+        className={clsx(styles.button, isEngLang && styles.active)}
         onClick={() => handleChange('en')}
-        disabled={locale === 'en'}
+        disabled={isEngLang}
       >
         EN
       </Button>
       <span className={styles.separator}>/</span>
       <Button
         variant="ghost"
-        className={clsx(styles.button, locale === 'ru' && styles.active)}
+        className={clsx(styles.button, isRusLang && styles.active)}
         onClick={() => handleChange('ru')}
-        disabled={locale === 'ru'}
+        disabled={isRusLang}
       >
         RU
       </Button>
