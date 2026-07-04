@@ -67,8 +67,8 @@ export function AuthForm({ variant }: IProps) {
 
       <form
         className={styles.form}
-        onSubmit={() => {
-          handleSubmit(onSubmit);
+        onSubmit={(event) => {
+          void handleSubmit(onSubmit)(event);
         }}
       >
         <Input
