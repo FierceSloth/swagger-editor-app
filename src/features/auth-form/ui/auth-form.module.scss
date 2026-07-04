@@ -63,3 +63,12 @@
 .switchLink {
   font-weight: 600;
 }
+
+.serverError {
+  flex: 1;
+  font-weight: 500;
+  font-size: 12px;
+  color: var(--red-color);
+  letter-spacing: 0.5px;
+  display: block;
+}
