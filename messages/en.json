@@ -18,7 +18,11 @@
       "passwordMinLength": "Min 8 characters",
       "passwordNeedLetter": "Need at least 1 letter",
       "passwordNeedNumber": "Need at least 1 number",
-      "passwordNeedSpecial": "Need at least 1 special character"
+      "passwordNeedSpecial": "Need at least 1 special character",
+      "invalidCredentials": "Invalid email or password",
+      "userAlreadyExists": "A user with this email already exists",
+      "tooManyRequests": "Too many attempts, please try again later",
+      "unknownError": "Something went wrong, please try again"
     }
   },
   "Register": {
@@ -36,7 +40,11 @@
       "passwordNeedLetter": "Need at least 1 letter",
       "passwordNeedNumber": "Need at least 1 number",
       "passcodeMismatch": "Passwords do not match",
-      "passwordNeedSpecial": "Need at least 1 special character"
+      "passwordNeedSpecial": "Need at least 1 special character",
+      "invalidCredentials": "Invalid email or password",
+      "userAlreadyExists": "A user with this email already exists",
+      "tooManyRequests": "Too many attempts, please try again later",
+      "unknownError": "Something went wrong, please try again"
     }
   },
   "NotFound": {

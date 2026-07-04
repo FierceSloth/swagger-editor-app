@@ -18,7 +18,11 @@
       "passwordMinLength": "Минимум 8 символов",
       "passwordNeedLetter": "Нужна хотя бы 1 буква",
       "passwordNeedNumber": "Нужна хотя бы 1 цифра",
-      "passwordNeedSpecial": "Нужен хотя бы 1 специальный символ"
+      "passwordNeedSpecial": "Нужен хотя бы 1 специальный символ",
+      "invalidCredentials": "Неверный email или пароль",
+      "userAlreadyExists": "Пользователь с таким email уже зарегистрирован",
+      "tooManyRequests": "Слишком много попыток, попробуйте позже",
+      "unknownError": "Что-то пошло не так, попробуйте снова"
     }
   },
   "Register": {
@@ -36,7 +40,11 @@
       "passwordNeedLetter": "Нужна хотя бы 1 буква",
       "passwordNeedNumber": "Нужна хотя бы 1 цифра",
       "passwordNeedSpecial": "Нужен хотя бы 1 специальный символ",
-      "passcodeMismatch": "Пароли не совпадают"
+      "passcodeMismatch": "Пароли не совпадают",
+      "invalidCredentials": "Неверный email или пароль",
+      "userAlreadyExists": "Пользователь с таким email уже зарегистрирован",
+      "tooManyRequests": "Слишком много попыток, попробуйте позже",
+      "unknownError": "Что-то пошло не так, попробуйте снова"
     }
   },
   "NotFound": {
