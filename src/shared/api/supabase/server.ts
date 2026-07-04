@@ -16,7 +16,9 @@ export async function createClient() {
             cookieStore.set(name, value, options);
           });
         } catch {
-          // ignore in Server Components; middleware handles refresh persistence
+          // cookies().set() may fail in some Server Component contexts.
+          // Session refresh persistence is handled in proxy/updateSession.
+          // https://supabase.com/docs/guides/troubleshooting/how-to-migrate-from-supabase-auth-helpers-to-ssr-package-5NRunM
         }
       },
     },
