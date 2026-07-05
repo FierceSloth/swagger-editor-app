@@ -27,16 +27,24 @@ async function proxyRequest(request: NextRequest): Promise<Response> {
 
   const body = method === 'GET' || method === 'HEAD' ? undefined : await request.arrayBuffer();
 
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 10_000);
+
   try {
-    const response = await fetch(parsedTargetUrl.toString(), {
+    return await fetch(parsedTargetUrl.toString(), {
       method,
       headers,
       body,
+      signal: controller.signal,
     });
+  } catch (error) {
+    if (error instanceof DOMException && error.name === 'AbortError') {
+      return Response.json({ error: 'Proxy request timeout' }, { status: 504 });
+    }
 
-    return response;
-  } catch {
     return Response.json({ error: 'Failed to proxy request' }, { status: 502 });
+  } finally {
+    clearTimeout(timeoutId);
   }
 }
 
