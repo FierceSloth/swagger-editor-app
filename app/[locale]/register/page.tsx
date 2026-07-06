@@ -1,6 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 
-export default async function RegisterPage() {
+export default async function Page() {
   const t = await getTranslations('Register');
 
   return (
