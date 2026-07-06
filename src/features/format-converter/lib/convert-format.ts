@@ -1,24 +1,19 @@
 import type { DataFormat } from '@/shared/types/format';
+import { parseToObject } from '@/shared/lib/parse-to-object';
 import yaml from 'yaml';
 
 export function convertToJson(text: string): string | null {
-  try {
-    const jsObject = yaml.parse(text) as unknown;
-    if (typeof jsObject !== 'object' || jsObject === null) return null;
-    return JSON.stringify(jsObject, null, 2);
-  } catch {
-    return null;
-  }
+  const jsObject = parseToObject(text);
+  if (jsObject === null) return null;
+
+  return JSON.stringify(jsObject, null, 2);
 }
 
 export function convertToYaml(text: string): string | null {
-  try {
-    const jsObject = yaml.parse(text) as unknown;
-    if (typeof jsObject !== 'object' || jsObject === null) return null;
-    return yaml.stringify(jsObject);
-  } catch {
-    return null;
-  }
+  const jsObject = parseToObject(text);
+  if (jsObject === null) return null;
+
+  return yaml.stringify(jsObject);
 }
 
 export function convertFormat(text: string, targetFormat: DataFormat): string | null {

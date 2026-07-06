@@ -1,4 +1,6 @@
 import { ArcBackground } from '@/shared/ui/arc-background';
+import { Footer } from '@/widgets/footer';
+import { Header } from '@/widgets/header';
 import { routing } from '@shared/config/i18n/routing';
 import type { Metadata } from 'next';
 import { NextIntlClientProvider, hasLocale } from 'next-intl';
@@ -7,6 +9,7 @@ import { notFound } from 'next/navigation';
 import type { ReactNode } from 'react';
 
 import '@/app/styles/style.scss';
+import clsx from 'clsx';
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -45,10 +48,14 @@ export default async function RootLayout({ children, params }: Props) {
   }
 
   return (
-    <html lang={locale} className={`${ibmPlexSans.variable} ${spaceGrotesk.variable} ${jetBrainsMono.variable}`}>
+    <html lang={locale} className={clsx(ibmPlexSans.variable, spaceGrotesk.variable, jetBrainsMono.variable)}>
       <body>
         <ArcBackground />
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider>
+          <Header />
+          {children}
+          <Footer />
+        </NextIntlClientProvider>
       </body>
     </html>
   );

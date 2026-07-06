@@ -24,6 +24,7 @@ export function CodeEditor({
   hideLines = false,
   readonly = false,
   className,
+  extensions,
   ...props
 }: ICodeEditorProps) {
   const baseExtensions = [
@@ -32,7 +33,7 @@ export function CodeEditor({
     syntaxTheme,
     EditorState.readOnly.of(readonly),
   ];
-  const extensions = [props.extensions || [], ...baseExtensions];
+  const allExtensions = [...(extensions || []), ...baseExtensions];
 
   return (
     <div
@@ -49,7 +50,7 @@ export function CodeEditor({
       <CodeMirror
         {...props}
         theme="none"
-        extensions={extensions}
+        extensions={allExtensions}
         editable={!readonly}
         basicSetup={{
           lineNumbers: !hideLines,

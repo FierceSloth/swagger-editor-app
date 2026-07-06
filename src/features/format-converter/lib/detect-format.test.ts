@@ -16,19 +16,19 @@ describe('detectFormat', () => {
     expect(detectFormat(yamlString)).toBe('yaml');
   });
 
-  it('should return unknown for empty string', () => {
-    expect(detectFormat('')).toBe('unknown');
+  it('should return null for empty string', () => {
+    expect(detectFormat('')).toBeNull();
   });
 
-  it('should return unknown for whitespace-only string', () => {
-    expect(detectFormat('   \n  ')).toBe('unknown');
+  it('should return null for whitespace-only string', () => {
+    expect(detectFormat('   \n  ')).toBeNull();
   });
 
-  it('should return unknown for plain scalar string', () => {
-    expect(detectFormat('hello world')).toBe('unknown');
+  it('should return null for plain scalar string', () => {
+    expect(detectFormat('hello world')).toBeNull();
   });
 
-  it('should return unknown for a number', () => {
-    expect(detectFormat('42')).toBe('unknown');
+  it('should return null for a number', () => {
+    expect(detectFormat('42')).toBeNull();
   });
 });

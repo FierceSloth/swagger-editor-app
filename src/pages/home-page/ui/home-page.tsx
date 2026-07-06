@@ -1,9 +1,9 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import yaml from 'yaml';
 
 import { useDebounce } from '@/shared/lib/hooks';
+import { parseToObject } from '@/shared/lib/parse-to-object';
 import { SwaggerEditor } from '@/widgets/swagger-editor';
 
 import styles from './home-page.module.scss';
@@ -17,19 +17,10 @@ export function HomePage() {
   const parsedSchema = useMemo(() => {
     if (!isSchemaValid || !debouncedText) return null;
 
-    try {
-      const parsed = yaml.parse(debouncedText) as unknown;
-      if (typeof parsed === 'object' && parsed !== null) {
-        return parsed as Record<string, unknown>;
-      }
-    } catch {
-      // ignore this
-    }
-
-    return null;
+    return parseToObject(debouncedText);
   }, [debouncedText, isSchemaValid]);
 
-  console.log(parsedSchema); // ? For the time being, as there is no Swagger Viewer
+  console.log(parsedSchema); // TODO: Remove after add Swagger Viewer (<RSS-SE-17>)
 
   return (
     <div className={styles.container}>
