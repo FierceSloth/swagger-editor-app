@@ -1,1 +1,11 @@
-export { LoginPage as default } from '@pages/login';
+import { getTranslations } from 'next-intl/server';
+
+export default async function Page() {
+  const t = await getTranslations('Login');
+
+  return (
+    <main>
+      <h1>{t('title')}</h1>
+    </main>
+  );
+}

@@ -23,6 +23,7 @@
 
   &:disabled {
     opacity: 0.5;
+    pointer-events: none;
     cursor: not-allowed;
   }
 }
@@ -48,5 +49,23 @@
 
   &:hover {
     color: var(--text-primary);
+  }
+}
+
+.tertiary {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-primary);
+
+  border: 1px solid transparent;
+  border-radius: 4px;
+
+  padding: 0.25rem 0.75rem;
+  transition: all 0.1s;
+
+  &:hover {
+    background-color: var(--bg-surface-2);
+    border-color: var(--bg-surface-3);
   }
 }

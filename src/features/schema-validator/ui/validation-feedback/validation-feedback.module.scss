@@ -1,0 +1,32 @@
+.wrapper {
+  padding: 0.75rem 1.5rem;
+  background-color: var(--bg-surface-1);
+  border-top: 1px solid var(--bg-surface-2);
+
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.text {
+  font-weight: 600;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+}
+
+.error {
+  color: var(--red-color);
+}
+
+.warning {
+  color: var(--orange-color);
+}
+
+.success {
+  color: var(--green-color);
+}

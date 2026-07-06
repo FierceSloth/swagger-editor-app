@@ -1,7 +1,9 @@
-import { getTranslations } from 'next-intl/server';
+import { HomePage } from '@/pages/home-page';
 
-export default async function HomePage() {
-  const t = await getTranslations('Home');
-
-  return <h1>{t('title')}</h1>;
+export default function Page() {
+  return (
+    <main>
+      <HomePage />
+    </main>
+  );
 }
