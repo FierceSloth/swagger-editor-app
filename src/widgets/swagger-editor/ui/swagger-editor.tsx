@@ -19,7 +19,7 @@ interface IProps {
 }
 
 export function SwaggerEditor({ value = '', onChange, onValidationChange }: IProps) {
-  const debouncedValue = useDebounce(value, 300);
+  const debouncedValue = useDebounce(value, 500);
   const currentFormat = useMemo(() => detectFormat(debouncedValue), [debouncedValue]);
 
   const [errorsCount, setErrorsCount] = useState(0);

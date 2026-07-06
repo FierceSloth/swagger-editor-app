@@ -2,7 +2,6 @@
 
 import { useMemo, useState } from 'react';
 
-import { useDebounce } from '@/shared/lib/hooks';
 import { parseToObject } from '@/shared/lib/parse-to-object';
 import { SwaggerEditor } from '@/widgets/swagger-editor';
 
@@ -12,13 +11,11 @@ export function HomePage() {
   const [rawText, setRawText] = useState('');
   const [isSchemaValid, setIsSchemaValid] = useState(false);
 
-  const debouncedText = useDebounce(rawText, 500);
-
   const parsedSchema = useMemo(() => {
-    if (!isSchemaValid || !debouncedText) return null;
+    if (!isSchemaValid || !rawText) return null;
 
-    return parseToObject(debouncedText);
-  }, [debouncedText, isSchemaValid]);
+    return parseToObject(rawText);
+  }, [rawText, isSchemaValid]);
 
   console.log(parsedSchema); // TODO: Remove after add Swagger Viewer (<RSS-SE-17>)
 
