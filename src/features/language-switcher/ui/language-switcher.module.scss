@@ -1,0 +1,22 @@
+.switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 20px;
+}
+
+.button {
+  font-weight: 400;
+  padding: 4px;
+  font-size: 11px;
+  color: var(--text-tech);
+  font-family: var(--font-mono);
+}
+
+.separator {
+  color: var(--text-tech);
+}
+
+.active {
+  color: var(--text-primary);
+}

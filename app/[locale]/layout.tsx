@@ -5,6 +5,8 @@ import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { IBM_Plex_Sans, JetBrains_Mono, Space_Grotesk } from 'next/font/google';
 import { notFound } from 'next/navigation';
 import type { ReactNode } from 'react';
+import { Header } from '@/widgets/header';
+import { Footer } from '@/widgets/footer';
 
 import '@/app/styles/style.scss';
 
@@ -48,7 +50,11 @@ export default async function RootLayout({ children, params }: Props) {
     <html lang={locale} className={`${ibmPlexSans.variable} ${spaceGrotesk.variable} ${jetBrainsMono.variable}`}>
       <body>
         <ArcBackground />
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider>
+          <Header />
+          {children}
+          <Footer />
+        </NextIntlClientProvider>
       </body>
     </html>
   );
