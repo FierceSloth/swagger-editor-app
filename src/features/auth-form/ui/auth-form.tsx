@@ -50,10 +50,14 @@ export function AuthForm({ variant }: IProps) {
     formData.set('password', values.password);
 
     startTransition(async () => {
-      const result = isRegister ? await signUp(formData) : await signInWithPassword(formData);
+      try {
+        const result = isRegister ? await signUp(formData) : await signInWithPassword(formData);
 
-      if (result?.error) {
-        setServerError(t(`errors.${result.error}`));
+        if (result?.error) {
+          setServerError(t(`errors.${result.error}`));
+        }
+      } catch {
+        setServerError(t('errors.unknownError'));
       }
     });
   };
