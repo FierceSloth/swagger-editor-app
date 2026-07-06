@@ -1,8 +1,8 @@
 import type { DetectedFormat } from '@/shared/types/format';
-import yaml from 'yaml';
+import { parseToObject } from '@/shared/lib/parse-to-object';
 
 export function detectFormat(text: string): DetectedFormat {
-  if (!text.trim()) return 'unknown';
+  if (!text.trim()) return null;
 
   try {
     const parsed = JSON.parse(text) as unknown;
@@ -13,14 +13,9 @@ export function detectFormat(text: string): DetectedFormat {
     // not JSON
   }
 
-  try {
-    const parsed = yaml.parse(text) as unknown;
-    if (typeof parsed === 'object' && parsed !== null) {
-      return 'yaml';
-    }
-  } catch {
-    // not YAML
+  if (parseToObject(text) !== null) {
+    return 'yaml';
   }
 
-  return 'unknown';
+  return null;
 }

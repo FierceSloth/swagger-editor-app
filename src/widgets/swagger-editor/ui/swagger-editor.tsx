@@ -1,10 +1,11 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { convertFormat, detectFormat, FormatToggle } from '@/features/format-converter';
 import { openapiLinter, ValidationFeedback, ValidationStatus } from '@/features/schema-validator';
-import type { DataFormat, DetectedFormat } from '@/shared/types/format';
+import { useDebounce } from '@/shared/lib/hooks';
+import type { DataFormat } from '@/shared/types/format';
 import { CodeEditor } from '@/shared/ui/code-editor';
 import { forEachDiagnostic } from '@codemirror/lint';
 import type { ViewUpdate } from '@uiw/react-codemirror';
@@ -18,32 +19,27 @@ interface IProps {
 }
 
 export function SwaggerEditor({ value = '', onChange, onValidationChange }: IProps) {
-  const [currentFormat, setCurrentFormat] = useState<DetectedFormat>('yaml');
+  const debouncedValue = useDebounce(value, 300);
+  const currentFormat = useMemo(() => detectFormat(debouncedValue), [debouncedValue]);
 
-  const [validation, setValidation] = useState({ errors: 0, warnings: 0 });
-  const isValid = validation.errors === 0 && currentFormat !== 'unknown' && value.trim().length > 0;
+  const [errorsCount, setErrorsCount] = useState(0);
+  const [warningsCount, setWarningsCount] = useState(0);
+  const isValid = errorsCount === 0 && currentFormat !== null && value.trim().length > 0;
 
   useEffect(() => {
     onValidationChange?.(isValid);
-  }, [validation.errors, currentFormat, onValidationChange, isValid]);
+  }, [errorsCount, currentFormat, onValidationChange, isValid]);
 
   const onFormatToggle = (newFormat: DataFormat) => {
     if (newFormat === currentFormat) return;
     const convertedText = convertFormat(value, newFormat);
 
     if (convertedText !== null) {
-      setCurrentFormat(newFormat);
       onChange?.(convertedText);
     }
   };
 
-  const onTextChange = (newText: string) => {
-    const detected = detectFormat(newText);
-    setCurrentFormat(detected);
-    onChange?.(newText);
-  };
-
-  const handleEditorUpdate = useCallback((viewUpdate: ViewUpdate) => {
+  const onEditorUpdate = useCallback((viewUpdate: ViewUpdate) => {
     let errors = 0;
     let warnings = 0;
     forEachDiagnostic(viewUpdate.state, (diag) => {
@@ -51,12 +47,8 @@ export function SwaggerEditor({ value = '', onChange, onValidationChange }: IPro
       if (diag.severity === 'warning') warnings++;
     });
 
-    setValidation((prev) => {
-      if (prev.errors !== errors || prev.warnings !== warnings) {
-        return { errors, warnings };
-      }
-      return prev;
-    });
+    setErrorsCount(errors);
+    setWarningsCount(warnings);
   }, []);
 
   return (
@@ -68,13 +60,13 @@ export function SwaggerEditor({ value = '', onChange, onValidationChange }: IPro
       <CodeEditor
         value={value}
         height="100%"
-        onChange={onTextChange}
-        format={currentFormat === 'unknown' ? undefined : currentFormat}
+        onChange={onChange}
+        format={currentFormat ?? undefined}
         className={styles.editor}
         extensions={[openapiLinter]}
-        onUpdate={handleEditorUpdate}
+        onUpdate={onEditorUpdate}
       />
-      <ValidationFeedback errorsCount={validation.errors} warningsCount={validation.warnings} />
+      <ValidationFeedback errorsCount={errorsCount} warningsCount={warningsCount} />
     </div>
   );
 }

@@ -32,9 +32,9 @@ export const openapiLinter = linter(async (view: EditorView) => {
     const severity = severityMap[issue.severity] as Severity;
 
     return {
-      from: from,
-      to: to,
-      severity: severity,
+      from,
+      to,
+      severity,
       message: issue.message,
     };
   });
