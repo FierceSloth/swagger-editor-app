@@ -3,6 +3,7 @@ import { ROUTES } from '@/shared/config/routes';
 import { Button } from '@/shared/ui/button';
 
 import styles from '../header.module.scss';
+import { signOut } from '@/features/auth';
 
 interface IProps {
   historyLabel: string;
@@ -15,9 +16,12 @@ export function PrivateNavigation({ historyLabel, signOutLabel }: IProps) {
       <ButtonLink variant="primary" href={ROUTES.HISTORY} className={styles.button}>
         {historyLabel}
       </ButtonLink>
-      <Button variant="secondary" className={styles.button}>
-        {signOutLabel}
-      </Button>
+
+      <form action={signOut}>
+        <Button variant="secondary" className={styles.button}>
+          {signOutLabel}
+        </Button>
+      </form>
     </>
   );
 }
