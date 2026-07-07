@@ -16,6 +16,7 @@ import { Link } from '@/shared/config/i18n/navigation';
 import styles from './auth-form.module.scss';
 import { useState, useTransition } from 'react';
 import { signInWithPassword, signUp } from '@/features/auth/model/action';
+import { ROUTES } from '@/shared/config/routes';
 
 type AuthFormVariant = 'login' | 'register';
 type AuthFormValues = LoginFormValues | RegisterFormValues;
@@ -109,7 +110,7 @@ export function AuthForm({ variant }: IProps) {
 
       <div className={styles.switchContainer}>
         {t('switchText')}
-        <Link className={styles.switchLink} href={isRegister ? '/login' : '/register'}>
+        <Link className={styles.switchLink} href={isRegister ? ROUTES.LOGIN : ROUTES.REGISTER}>
           {t('switchLink')}
         </Link>
       </div>
