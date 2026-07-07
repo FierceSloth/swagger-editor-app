@@ -36,5 +36,10 @@
     "about": "About",
     "team1": "Built with",
     "team2": "by team GMT+5 Development"
+  },
+  "Error": {
+    "title": "Something went wrong",
+    "description": "An unexpected error occurred. Please try again.",
+    "tryAgain": "Try again"
   }
 }

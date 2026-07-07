@@ -1,0 +1,24 @@
+.errorPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  border-radius: 48px;
+  border: 1px solid var(--bg-surface-2);
+  background-color: var(--bg-surface-1);
+  backdrop-filter: blur(12px);
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  margin-bottom: 1rem;
+}
+
+.description {
+  margin-bottom: 2rem;
+}
