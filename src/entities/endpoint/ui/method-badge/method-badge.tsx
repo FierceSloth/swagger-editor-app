@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 
 import { Badge } from '@/shared/ui/badge';
-import type { HttpMethod } from '../types/http-types';
+import type { HttpMethod } from '../../types/http-types';
 
 import type { BadgeColor } from '@/shared/ui/badge/badge';
 import styles from './method-badge.module.scss';

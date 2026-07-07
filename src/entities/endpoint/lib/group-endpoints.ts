@@ -1,18 +1,62 @@
-type Path = Record<string, unknown>;
+import type { HttpMethod } from '../types/http-types';
 
-export function groupEndpoints(paths: Record<string, Path>) {
-  const groups: Partial<Record<string, Path>> = {};
+export interface IOpenApiOperation {
+  tags?: string[];
+  summary?: string;
+  description?: string;
+  operationId?: string;
+  [key: string]: unknown;
+}
 
-  for (const [key, value] of Object.entries(paths)) {
-    const segments = key.split('/').filter(Boolean);
-    const tag = segments[0] || 'default';
+export type IOpenApiPathItem = {
+  [K in HttpMethod]?: IOpenApiOperation;
+} & {
+  parameters?: unknown[];
+  $ref?: string;
+  [key: string]: unknown;
+};
 
-    if (!groups[tag]) {
-      groups[tag] = {};
+export interface IEndpointItem {
+  id: string;
+  method: HttpMethod;
+  path: string;
+  summary: string;
+  details: IOpenApiOperation;
+}
+
+export interface IEndpointGroup {
+  tag: string;
+  endpoints: IEndpointItem[];
+}
+
+export function groupEndpoints(paths: Record<string, IOpenApiPathItem>): IEndpointGroup[] {
+  const groupMap: Record<string, IEndpointItem[]> = {};
+
+  for (const [path, methodsObj] of Object.entries(paths)) {
+    const httpMethods: HttpMethod[] = ['get', 'post', 'put', 'delete', 'patch', 'options', 'head'];
+
+    for (const method of httpMethods) {
+      const details = methodsObj[method];
+      if (!details) continue;
+
+      const tag = details.tags?.[0] || path.split('/').filter(Boolean)[0] || 'default';
+
+      if (!groupMap[tag]) {
+        groupMap[tag] = [];
+      }
+
+      groupMap[tag].push({
+        id: `${method}-${path}`,
+        method,
+        path,
+        summary: details.summary || '',
+        details,
+      });
     }
-
-    groups[tag][key] = value;
   }
 
-  return groups;
+  return Object.entries(groupMap).map(([tag, endpoints]) => ({
+    tag,
+    endpoints,
+  }));
 }
