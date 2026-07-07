@@ -3,6 +3,7 @@
 import { redirect } from 'next/navigation';
 import { createClient } from '@/shared/api/supabase/server';
 import getFormValue from '@/shared/api/utils/form';
+import { ROUTES } from '@/shared/config/routes';
 
 export type AuthError = 'invalidCredentials' | 'userAlreadyExists' | 'tooManyRequests' | 'unknownError';
 
@@ -41,7 +42,7 @@ export async function signInWithPassword(formData: FormData): Promise<AuthAction
     return { error: mapAuthError(error.code, error.message) };
   }
 
-  redirect('/');
+  redirect(ROUTES.HOME);
 }
 
 export async function signUp(formData: FormData) {
@@ -59,7 +60,7 @@ export async function signUp(formData: FormData) {
     return { error: mapAuthError(error.code, error.message) };
   }
 
-  redirect('/');
+  redirect(ROUTES.HOME);
 }
 
 export async function signOut() {
@@ -71,5 +72,5 @@ export async function signOut() {
     return { error: mapAuthError(error.code, error.message) };
   }
 
-  redirect('/login');
+  redirect(ROUTES.LOGIN);
 }

@@ -4,7 +4,7 @@ import { GlassCard } from '@/shared/ui/glass-card';
 import { useTranslations } from 'next-intl';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm, type Resolver } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { loginSchema, registerSchema, type RegisterFormValues, type LoginFormValues } from '../model/schemas';
 
 import { Button } from '@/shared/ui/button';
@@ -38,7 +38,7 @@ export function AuthForm({ variant }: IProps) {
     handleSubmit,
     formState: { errors, isValid },
   } = useForm<AuthFormValues>({
-    resolver: zodResolver(schema) as Resolver<AuthFormValues>,
+    resolver: zodResolver(schema),
     mode: 'onChange',
   });
 
