@@ -14,13 +14,14 @@ export interface IOpenApiOperation {
   summary?: string;
   description?: string;
   operationId?: string;
+  parameters?: IOpenApiParameter[];
   [key: string]: unknown;
 }
 
 export type IOpenApiPathItem = {
   [K in HttpMethod]?: IOpenApiOperation;
 } & {
-  parameters?: unknown[];
+  parameters?: IOpenApiParameter[];
   $ref?: string;
   [key: string]: unknown;
 };

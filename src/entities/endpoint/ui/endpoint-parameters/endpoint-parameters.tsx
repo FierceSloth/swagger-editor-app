@@ -2,6 +2,7 @@ import { useTranslations } from 'next-intl';
 
 import type { IOpenApiParameter } from '../../types/openapi-types';
 
+import { Badge } from '@/shared/ui/badge';
 import styles from './endpoint-parameters.module.scss';
 
 interface IProps {
@@ -39,9 +40,9 @@ export function EndpointParameters({ parameters }: IProps) {
                 <td className={styles.cellIn}>{param.in}</td>
                 <td className={styles.cellType}>{getParameterType(param)}</td>
                 <td className={styles.cellRequired}>
-                  <span className={param.required ? styles.requiredYes : styles.requiredNo}>
+                  <Badge className={styles.requiredBadge} color={param.required ? 'green' : 'gray'}>
                     {param.required ? t('yes') : t('no')}
-                  </span>
+                  </Badge>
                 </td>
                 <td className={styles.cellDescription}>{param.description || '—'}</td>
               </tr>

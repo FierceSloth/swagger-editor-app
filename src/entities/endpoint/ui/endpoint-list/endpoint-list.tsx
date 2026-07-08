@@ -1,6 +1,7 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/shared/ui/accordion';
 import clsx from 'clsx';
 import type { IEndpointGroup } from '../../types/openapi-types';
+import { EndpointParameters } from '../endpoint-parameters/endpoint-parameters';
 import { MethodBadge } from '../method-badge/method-badge';
 import styles from './endpoint-list.module.scss';
 
@@ -28,7 +29,7 @@ export function EndpointList({ className, groups }: IProps) {
                 </AccordionTrigger>
 
                 <AccordionContent>
-                  <div className={styles.placeholderContent}>Endpoint Content</div>
+                  <EndpointParameters parameters={endpoint.details.parameters} />
                 </AccordionContent>
               </AccordionItem>
             ))}
