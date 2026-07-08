@@ -1,6 +1,6 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/shared/ui/accordion';
 import clsx from 'clsx';
-import type { IEndpointGroup } from '../../lib/group-endpoints';
+import type { IEndpointGroup } from '../../types/openapi-types';
 import { MethodBadge } from '../method-badge/method-badge';
 import styles from './endpoint-list.module.scss';
 

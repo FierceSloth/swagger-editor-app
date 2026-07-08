@@ -23,11 +23,10 @@ export interface IOpenApiSchema {
 
 interface IProps {
   schema: IOpenApiSchema | null;
-  isSchemaValid: boolean;
 }
 
-export const SwaggerViewer = memo(({ schema, isSchemaValid }: IProps) => {
-  if (!schema || !isSchemaValid) return null;
+export const SwaggerViewer = memo(({ schema }: IProps) => {
+  if (!schema) return null;
 
   const groups = groupEndpoints(schema.paths);
   return (

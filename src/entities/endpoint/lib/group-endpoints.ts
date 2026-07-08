@@ -1,33 +1,5 @@
 import type { HttpMethod } from '../types/http-types';
-
-export interface IOpenApiOperation {
-  tags?: string[];
-  summary?: string;
-  description?: string;
-  operationId?: string;
-  [key: string]: unknown;
-}
-
-export type IOpenApiPathItem = {
-  [K in HttpMethod]?: IOpenApiOperation;
-} & {
-  parameters?: unknown[];
-  $ref?: string;
-  [key: string]: unknown;
-};
-
-export interface IEndpointItem {
-  id: string;
-  method: HttpMethod;
-  path: string;
-  summary: string;
-  details: IOpenApiOperation;
-}
-
-export interface IEndpointGroup {
-  tag: string;
-  endpoints: IEndpointItem[];
-}
+import type { IEndpointGroup, IEndpointItem, IOpenApiPathItem } from '../types/openapi-types';
 
 export function groupEndpoints(paths: Record<string, IOpenApiPathItem>): IEndpointGroup[] {
   if (!paths) return [];

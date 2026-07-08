@@ -13,6 +13,8 @@ export function HomePage() {
   const [rawText, setRawText] = useState('');
   const [isSchemaValid, setIsSchemaValid] = useState(false);
 
+  // Cast is safe: isSchemaValid is driven by Spectral OAS ruleset,
+  // which validates the full OpenAPI structure (info, title, paths, etc.)
   const parsedSchema = useMemo(() => {
     if (!isSchemaValid || !rawText) return null;
 
@@ -25,7 +27,7 @@ export function HomePage() {
         <SwaggerEditor value={rawText} onChange={setRawText} onValidationChange={setIsSchemaValid} />
       </div>
       <div className={styles.viewer}>
-        <SwaggerViewer schema={parsedSchema} isSchemaValid={isSchemaValid} />
+        <SwaggerViewer schema={parsedSchema} />
       </div>
     </div>
   );
