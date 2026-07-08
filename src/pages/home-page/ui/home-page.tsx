@@ -11,13 +11,13 @@ import { detectFormat } from '@/features/format-converter';
 
 import styles from './home-page.module.scss';
 
-const DEBOUNCE_DELAY = 1_000;
+const DEBOUNCE_DELAY_SIZE_MS = 1_000; // 1 second
 
 export function HomePage() {
   const { user } = useAuth();
   const [rawText, setRawText] = useState('');
   const [isSchemaValid, setIsSchemaValid] = useState(false);
-  const debouncedText = useDebounce(rawText, DEBOUNCE_DELAY);
+  const debouncedText = useDebounce(rawText, DEBOUNCE_DELAY_SIZE_MS);
   const skipAutosave = useRef(false);
 
   useEffect(() => {
