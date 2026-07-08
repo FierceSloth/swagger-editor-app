@@ -41,5 +41,8 @@
     "title": "Something went wrong",
     "description": "An unexpected error occurred. Please try again.",
     "tryAgain": "Try again"
+  },
+  "Spinner": {
+    "label": "Loading..."
   }
 }
