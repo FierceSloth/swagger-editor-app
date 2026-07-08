@@ -30,6 +30,7 @@ export interface IEndpointGroup {
 }
 
 export function groupEndpoints(paths: Record<string, IOpenApiPathItem>): IEndpointGroup[] {
+  if (!paths) return [];
   const groupMap: Record<string, IEndpointItem[]> = {};
 
   for (const [path, methodsObj] of Object.entries(paths)) {

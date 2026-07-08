@@ -14,15 +14,17 @@ export function EndpointList({ className, groups }: IProps) {
     <div className={clsx(styles.listWrapper, className)}>
       {groups.map((group) => (
         <div key={group.tag} className={styles.group}>
-          <h2 className={styles.tagTitle}>{group.tag.toUpperCase()}</h2>
+          <h2 className={styles.tagTitle}>{group.tag}</h2>
 
           <Accordion>
             {group.endpoints.map((endpoint) => (
               <AccordionItem key={endpoint.id} value={endpoint.id}>
                 <AccordionTrigger>
-                  <MethodBadge type={endpoint.method} className="" />
-                  <span className={styles.pathText}>{endpoint.path}</span>
-                  <span className={styles.summaryText}>{endpoint.summary}</span>
+                  <div className={styles.triggerWrapper}>
+                    <MethodBadge type={endpoint.method} className="" />
+                    <span className={styles.pathText}>{endpoint.path}</span>
+                    <span className={styles.summaryText}>{endpoint.summary}</span>
+                  </div>
                 </AccordionTrigger>
 
                 <AccordionContent>

@@ -4,6 +4,8 @@ import { useMemo, useState } from 'react';
 
 import { parseToObject } from '@/shared/lib/parse-to-object';
 import { SwaggerEditor } from '@/widgets/swagger-editor';
+import type { IOpenApiSchema } from '@/widgets/swagger-viewer/ui/swagger-viewer';
+import { SwaggerViewer } from '@/widgets/swagger-viewer/ui/swagger-viewer';
 
 import styles from './home-page.module.scss';
 
@@ -14,10 +16,8 @@ export function HomePage() {
   const parsedSchema = useMemo(() => {
     if (!isSchemaValid || !rawText) return null;
 
-    return parseToObject(rawText);
+    return parseToObject(rawText) as IOpenApiSchema;
   }, [rawText, isSchemaValid]);
-
-  console.log(parsedSchema); // TODO: Remove after add Swagger Viewer (<RSS-SE-17>)
 
   return (
     <div className={styles.container}>
@@ -25,9 +25,7 @@ export function HomePage() {
         <SwaggerEditor value={rawText} onChange={setRawText} onValidationChange={setIsSchemaValid} />
       </div>
       <div className={styles.viewer}>
-        <div className={styles.stub}>
-          <h2>Very Cool SwaggerViewer</h2>
-        </div>
+        <SwaggerViewer schema={parsedSchema} isSchemaValid={isSchemaValid} />
       </div>
     </div>
   );

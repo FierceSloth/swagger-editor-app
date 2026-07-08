@@ -35,7 +35,7 @@ export function AccordionTrigger({ children, className }: IProps) {
   return (
     <AccordionPrimitive.Header className={styles.header}>
       <AccordionPrimitive.Trigger className={clsx(styles.trigger, className)}>
-        <span className={styles.triggerContent}>{children}</span>
+        {children}
         <ChevronDown className={styles.icon} aria-hidden />
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
