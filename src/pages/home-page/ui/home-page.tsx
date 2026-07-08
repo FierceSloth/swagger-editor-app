@@ -1,21 +1,47 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 
 import { parseToObject } from '@/shared/lib/parse-to-object';
 import { SwaggerEditor } from '@/widgets/swagger-editor';
+import { useAuth } from '@/features/auth';
+import { loadEditorSchema, saveEditorSchema } from '@/features/schema-persistence/api/editor-schema';
+import { useDebounce } from '@/shared/lib/hooks';
+import { detectFormat } from '@/features/format-converter';
 
 import styles from './home-page.module.scss';
 
 export function HomePage() {
+  const { user } = useAuth();
   const [rawText, setRawText] = useState('');
   const [isSchemaValid, setIsSchemaValid] = useState(false);
+  const debouncedText = useDebounce(rawText, 1000);
+
+  useEffect(() => {
+    if (!user?.id) return;
+
+    void loadEditorSchema(user.id).then((saved) => {
+      if (saved) setRawText(saved.content);
+    });
+  }, [user]);
 
   const parsedSchema = useMemo(() => {
     if (!isSchemaValid || !rawText) return null;
 
     return parseToObject(rawText);
   }, [rawText, isSchemaValid]);
+
+  useEffect(() => {
+    if (!user?.id || !debouncedText) return;
+
+    const format = detectFormat(debouncedText) ?? 'yaml';
+
+    void saveEditorSchema({
+      userId: user.id,
+      content: debouncedText,
+      format,
+    });
+  }, [user, debouncedText]);
 
   console.log(parsedSchema); // TODO: Remove after add Swagger Viewer (<RSS-SE-17>)
 
