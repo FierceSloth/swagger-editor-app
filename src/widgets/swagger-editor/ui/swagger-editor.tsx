@@ -18,8 +18,10 @@ interface IProps {
   onValidationChange?: (isValid: boolean) => void;
 }
 
+const DEBOUNCE_DELAY = 500;
+
 export function SwaggerEditor({ value = '', onChange, onValidationChange }: IProps) {
-  const debouncedValue = useDebounce(value, 500);
+  const debouncedValue = useDebounce(value, DEBOUNCE_DELAY);
   const currentFormat = useMemo(() => detectFormat(debouncedValue), [debouncedValue]);
 
   const [errorsCount, setErrorsCount] = useState(0);

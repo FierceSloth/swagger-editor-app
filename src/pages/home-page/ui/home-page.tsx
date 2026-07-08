@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState, useEffect } from 'react';
+import { useMemo, useState, useEffect, useRef } from 'react';
 
 import { parseToObject } from '@/shared/lib/parse-to-object';
 import { SwaggerEditor } from '@/widgets/swagger-editor';
@@ -11,22 +11,31 @@ import { detectFormat } from '@/features/format-converter';
 
 import styles from './home-page.module.scss';
 
+const DEBOUNCE_DELAY = 1_000;
+
 export function HomePage() {
   const { user } = useAuth();
   const [rawText, setRawText] = useState('');
   const [isSchemaValid, setIsSchemaValid] = useState(false);
-  const debouncedText = useDebounce(rawText, 1000);
+  const debouncedText = useDebounce(rawText, DEBOUNCE_DELAY);
+  const skipAutosave = useRef(false);
 
   useEffect(() => {
     if (!user?.id) return;
 
-    void loadEditorSchema(user.id)
-      .then((saved) => {
-        if (saved) setRawText(saved.content);
-      })
-      .catch((error) => {
+    const loadSchema = async () => {
+      try {
+        const savedSchema = await loadEditorSchema(user.id);
+        if (savedSchema) {
+          skipAutosave.current = true;
+          setRawText(savedSchema.content);
+        }
+      } catch (error) {
         console.error('Failed to load saved schema:', error);
-      });
+      }
+    };
+
+    void loadSchema();
   }, [user?.id]);
 
   const parsedSchema = useMemo(() => {
@@ -36,17 +45,28 @@ export function HomePage() {
   }, [rawText, isSchemaValid]);
 
   useEffect(() => {
-    if (!user?.id || !debouncedText) return;
+    if (!user?.id) return;
 
-    const format = detectFormat(debouncedText) ?? 'yaml';
+    if (skipAutosave.current) {
+      skipAutosave.current = false;
+      return;
+    }
 
-    void saveEditorSchema({
-      userId: user.id,
-      content: debouncedText,
-      format,
-    }).catch((error) => {
-      console.error('Failed to autosave schema:', error);
-    });
+    const format = debouncedText ? detectFormat(debouncedText) : 'yaml';
+
+    const saveSchema = async () => {
+      try {
+        await saveEditorSchema({
+          userId: user.id,
+          content: debouncedText,
+          format: format ?? 'yaml',
+        });
+      } catch (error) {
+        console.error('Failed to autosave schema:', error);
+      }
+    };
+
+    void saveSchema();
   }, [user?.id, debouncedText]);
 
   console.log(parsedSchema); // TODO: Remove after add Swagger Viewer (<RSS-SE-17>)
