@@ -1,13 +1,12 @@
 'use client';
 
-import { useMemo, useState, useEffect, useRef } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 
 import { parseToObject } from '@/shared/lib/parse-to-object';
 import { SwaggerEditor } from '@/widgets/swagger-editor';
 import { useAuth } from '@/features/auth';
 import { loadEditorSchema, saveEditorSchema } from '@/features/schema-persistence/api/editor-schema';
 import { useDebounce } from '@/shared/lib/hooks';
-import { detectFormat } from '@/features/format-converter';
 
 import styles from './home-page.module.scss';
 
@@ -18,7 +17,6 @@ export function HomePage() {
   const [rawText, setRawText] = useState('');
   const [isSchemaValid, setIsSchemaValid] = useState(false);
   const debouncedText = useDebounce(rawText, DEBOUNCE_DELAY_SIZE_MS);
-  const skipAutosave = useRef(false);
 
   useEffect(() => {
     if (!user?.id) return;
@@ -27,7 +25,6 @@ export function HomePage() {
       try {
         const savedSchema = await loadEditorSchema(user.id);
         if (savedSchema) {
-          skipAutosave.current = true;
           setRawText(savedSchema.content);
         }
       } catch (error) {
@@ -47,19 +44,11 @@ export function HomePage() {
   useEffect(() => {
     if (!user?.id) return;
 
-    if (skipAutosave.current) {
-      skipAutosave.current = false;
-      return;
-    }
-
-    const format = debouncedText ? detectFormat(debouncedText) : 'yaml';
-
     const saveSchema = async () => {
       try {
         await saveEditorSchema({
           userId: user.id,
           content: debouncedText,
-          format: format ?? 'yaml',
         });
       } catch (error) {
         console.error('Failed to autosave schema:', error);
