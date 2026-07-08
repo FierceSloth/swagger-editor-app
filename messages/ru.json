@@ -32,6 +32,16 @@
     "history": "История",
     "signOut": "Выйти"
   },
+  "EndpointParameters": {
+    "title": "Параметры",
+    "name": "Имя",
+    "in": "Расположение",
+    "type": "Тип",
+    "required": "Обязательный",
+    "description": "Описание",
+    "yes": "Да",
+    "no": "Нет"
+  },
   "Footer": {
     "about": "О проекте",
     "team1": "Создано с",
