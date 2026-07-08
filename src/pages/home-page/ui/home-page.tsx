@@ -20,10 +20,14 @@ export function HomePage() {
   useEffect(() => {
     if (!user?.id) return;
 
-    void loadEditorSchema(user.id).then((saved) => {
-      if (saved) setRawText(saved.content);
-    });
-  }, [user]);
+    void loadEditorSchema(user.id)
+      .then((saved) => {
+        if (saved) setRawText(saved.content);
+      })
+      .catch((error) => {
+        console.error('Failed to load saved schema:', error);
+      });
+  }, [user?.id]);
 
   const parsedSchema = useMemo(() => {
     if (!isSchemaValid || !rawText) return null;
@@ -40,8 +44,10 @@ export function HomePage() {
       userId: user.id,
       content: debouncedText,
       format,
+    }).catch((error) => {
+      console.error('Failed to autosave schema:', error);
     });
-  }, [user, debouncedText]);
+  }, [user?.id, debouncedText]);
 
   console.log(parsedSchema); // TODO: Remove after add Swagger Viewer (<RSS-SE-17>)
 
