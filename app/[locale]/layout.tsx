@@ -10,6 +10,7 @@ import type { ReactNode } from 'react';
 
 import '@/app/styles/style.scss';
 import clsx from 'clsx';
+import { ToastProvider } from '@/shared/ui/toast';
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -52,9 +53,11 @@ export default async function RootLayout({ children, params }: Props) {
       <body>
         <ArcBackground />
         <NextIntlClientProvider>
-          <Header />
-          {children}
-          <Footer />
+          <ToastProvider>
+            <Header />
+            {children}
+            <Footer />
+          </ToastProvider>
         </NextIntlClientProvider>
       </body>
     </html>
