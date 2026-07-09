@@ -32,6 +32,16 @@
     "history": "History",
     "signOut": "Sign Out"
   },
+  "EndpointParameters": {
+    "title": "Parameters",
+    "name": "Name",
+    "in": "In",
+    "type": "Type",
+    "required": "Required",
+    "description": "Description",
+    "yes": "Yes",
+    "no": "No"
+  },
   "Footer": {
     "about": "About",
     "team1": "Built with",

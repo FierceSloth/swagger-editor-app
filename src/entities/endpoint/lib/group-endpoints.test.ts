@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { groupEndpoints, type IOpenApiPathItem } from './group-endpoints';
+import { groupEndpoints } from './group-endpoints';
+import type { IOpenApiPathItem } from '../types/openapi-types';
 
 describe('groupEndpoints', () => {
   it('should group paths by their first segment into a flat array structure', () => {
@@ -96,6 +97,32 @@ describe('groupEndpoints', () => {
           },
         ],
       },
+    ]);
+  });
+
+  it('should merge and override path-level and operation-level parameters correctly', () => {
+    const paths: Record<string, IOpenApiPathItem> = {
+      '/test': {
+        parameters: [
+          { name: 'X-Path-Param', in: 'header', required: true, description: 'Path level' },
+          { name: 'override-me', in: 'query', required: false, description: 'Will be overridden' },
+        ],
+        get: {
+          summary: 'Get request',
+          parameters: [
+            { name: 'override-me', in: 'query', required: true, description: 'Overridden value' },
+            { name: 'X-Op-Param', in: 'header', required: false },
+          ],
+        },
+      },
+    };
+
+    const result = groupEndpoints(paths);
+
+    expect(result[0].endpoints[0].details.parameters).toEqual([
+      { name: 'X-Path-Param', in: 'header', required: true, description: 'Path level' },
+      { name: 'override-me', in: 'query', required: true, description: 'Overridden value' },
+      { name: 'X-Op-Param', in: 'header', required: false },
     ]);
   });
 });
