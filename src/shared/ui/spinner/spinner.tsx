@@ -7,7 +7,7 @@ export async function Spinner() {
   const t = await getTranslations('Spinner');
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} data-testid="spinner">
       <div className={styles.spinnerPhase}>
         <div className={clsx(styles.phaseRing, styles.ringA)} />
         <div className={clsx(styles.phaseRing, styles.ringB)} />
