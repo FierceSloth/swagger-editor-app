@@ -9,6 +9,8 @@ interface IProps {
   parameters?: IOpenApiParameter[];
 }
 
+const EMPTY_VALUE_PLACEHOLDER = '—';
+
 function getParameterType(param: IOpenApiParameter): string {
   return param.schema?.type ?? param.type ?? 'string';
 }
@@ -44,7 +46,7 @@ export function EndpointParameters({ parameters }: IProps) {
                     {param.required ? t('yes') : t('no')}
                   </Badge>
                 </td>
-                <td className={styles.cellDescription}>{param.description || '—'}</td>
+                <td className={styles.cellDescription}>{param.description || EMPTY_VALUE_PLACEHOLDER}</td>
               </tr>
             ))}
           </tbody>
