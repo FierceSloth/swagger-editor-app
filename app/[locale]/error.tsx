@@ -12,7 +12,7 @@ interface IProps {
   reset: () => void;
 }
 
-export default function Error({ error, reset }: IProps) {
+export default function ErrorFallback({ error, reset }: IProps) {
   const t = useTranslations('Error');
   const { showToast } = useToast();
   const isToastShown = useRef(false);
