@@ -72,5 +72,15 @@
     "about": "About",
     "team1": "Built with",
     "team2": "by team GMT+5 Development"
+  },
+  "AboutHero": {
+    "label": "Education // Course",
+    "title": "The Rolling Scopes School",
+    "description": "This project was developed as a final stage of the React JS course. RS School is a community-based non-profit education project that has been helping people start their careers in IT for over 10 years.",
+    "courseLink": "View course details"
+  },
+  "AboutProject": {
+    "title": "About This Project",
+    "description": "AURA // EDITOR is a modern, high-performance OpenAPI specification tool designed for the next generation of web services. It provides a real-time validation environment, schema visualization, and interactive documentation, all wrapped in a sleek, minimalist interface inspired by futuristic tech aesthetics."
   }
 }
