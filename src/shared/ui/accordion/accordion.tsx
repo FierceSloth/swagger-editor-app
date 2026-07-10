@@ -44,6 +44,8 @@ export function AccordionTrigger({ children, className }: IProps) {
 
 export function AccordionContent({ children, className }: IProps) {
   return (
-    <AccordionPrimitive.Content className={clsx(styles.content, className)}>{children}</AccordionPrimitive.Content>
+    <AccordionPrimitive.Content className={styles.content}>
+      <div className={clsx(styles.contentInner, className)}>{children}</div>
+    </AccordionPrimitive.Content>
   );
 }
