@@ -57,6 +57,8 @@
   color: var(--text-secondary);
   font-size: 12px;
   background-color: var(--bg-surface-1);
+  border-top: 1px solid var(--bg-surface-2);
+  padding: 2rem;
   overflow: hidden;
 
   &[data-state='open'] {
@@ -65,11 +67,6 @@
   &[data-state='closed'] {
     animation: slideUp 0.3s cubic-bezier(0.87, 0, 0.13, 1);
   }
-}
-
-.contentInner {
-  padding: 1.3rem;
-  border-top: 1px solid var(--bg-surface-2);
 }
 
 @keyframes slideDown {
