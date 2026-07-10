@@ -1,11 +1,21 @@
 import type { HttpMethod } from './http-types';
 
+export interface IOpenApiSchema {
+  type?: 'object' | 'array' | 'string' | 'integer' | 'number' | 'boolean';
+  properties?: Record<string, IOpenApiSchema>;
+  items?: IOpenApiSchema;
+  example?: unknown;
+  default?: unknown;
+  enum?: unknown[];
+  $ref?: string;
+}
+
 export interface IOpenApiParameter {
   name: string;
   in: 'query' | 'header' | 'path' | 'cookie';
   description?: string;
   required?: boolean;
-  schema?: { type?: string; [key: string]: unknown };
+  schema?: IOpenApiSchema;
   type?: string;
 }
 
@@ -16,6 +26,8 @@ export interface IOpenApiOperation {
   operationId?: string;
   parameters?: IOpenApiParameter[];
   [key: string]: unknown;
+  requestBody?: IOpenApiRequestBody;
+  responses?: IOpenApiResponses;
 }
 
 export type IOpenApiPathItem = {
@@ -38,3 +50,21 @@ export interface IEndpointGroup {
   tag: string;
   endpoints: IEndpointItem[];
 }
+
+export interface IOpenApiMediaType {
+  schema?: IOpenApiSchema;
+  example?: unknown;
+}
+
+export interface IOpenApiRequestBody {
+  description?: string;
+  required?: boolean;
+  content: Record<string, IOpenApiMediaType>;
+}
+
+export interface IOpenApiResponse {
+  description: string;
+  content?: Record<string, IOpenApiMediaType>;
+}
+
+export type IOpenApiResponses = Record<string, IOpenApiResponse>;
