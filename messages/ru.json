@@ -44,7 +44,6 @@
   },
   "TryItOut": {
     "title": "Попробовать",
-    "cancel": "Отмена",
     "execute": "Выполнить",
     "generateCurl": "Сгенерировать cURL",
     "requestBody": "Тело запроса",

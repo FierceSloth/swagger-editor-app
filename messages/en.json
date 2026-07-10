@@ -44,7 +44,6 @@
   },
   "TryItOut": {
     "title": "Try It Out",
-    "cancel": "Cancel",
     "execute": "Execute",
     "generateCurl": "Generate cURL",
     "requestBody": "Request Body",
