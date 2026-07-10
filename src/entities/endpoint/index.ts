@@ -12,3 +12,5 @@ export type {
 } from './types/openapi-types';
 
 export type { HttpMethod } from './types/http-types';
+
+export { RequestBody } from './ui/request-body/request-body';
