@@ -1,25 +1,100 @@
+'use client';
+
+import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-
 import type { IEndpointItem } from '../../types/openapi-types';
-
 import { Button } from '@/shared/ui/button';
 import { Input } from '@/shared/ui/input';
-
 import { CirclePlay as PlayIcon } from 'lucide-react';
+import { fetchViaProxy } from '@/shared/api/proxy-client';
+import { CodeEditor } from '@/shared/ui/code-editor';
+import { buildUrl } from './build-url';
+import { buildHeaders } from './build-headers';
+import { getFormStringValue } from './get-form-string-value';
+import { formatResponseBody } from './format-response-body';
+import { getParameterFieldName } from './get-parameter-field-name';
+
 import styles from './try-it-out-form.module.scss';
 
 interface IProps {
   endpoint: IEndpointItem;
+  serverUrl: string;
 }
 
-export function TryItOutForm({ endpoint }: IProps) {
+interface IRequestResult {
+  status: number;
+  headers: Record<string, string>;
+  body: string;
+}
+
+export function TryItOutForm({ endpoint, serverUrl }: IProps) {
   const t = useTranslations('TryItOut');
+
+  const [result, setResult] = useState<IRequestResult | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const parameters = endpoint.details.parameters || [];
   const requestBody = endpoint.details.requestBody;
 
-  const jsonExample = requestBody?.content['application/json']?.example;
-  const defaultTextareaValue = jsonExample ? JSON.stringify(jsonExample, null, 2) : '';
+  const contentType = requestBody?.content['application/json']
+    ? 'application/json'
+    : Object.keys(requestBody?.content ?? {})[0];
+
+  const mediaType = contentType ? requestBody?.content[contentType] : undefined;
+
+  const jsonExample = mediaType?.example;
+
+  const defaultTextareaValue = jsonExample !== undefined ? JSON.stringify(jsonExample, null, 2) : '';
+
+  const handleSubmit = async (form: HTMLFormElement) => {
+    setIsLoading(true);
+    setResult(null);
+
+    try {
+      const formData = new FormData(form);
+
+      const targetUrl = buildUrl({
+        serverUrl,
+        path: endpoint.path,
+        parameters,
+        formData,
+      });
+
+      const headers = buildHeaders({
+        parameters,
+        formData,
+        contentType,
+      });
+
+      const requestBodyValue = getFormStringValue(formData, 'requestBody').trim();
+
+      const method = endpoint.method.toUpperCase();
+
+      const shouldSendBody = method !== 'GET' && method !== 'HEAD' && requestBodyValue.length > 0;
+
+      const response = await fetchViaProxy(targetUrl, {
+        method,
+        headers,
+        body: shouldSendBody ? requestBodyValue : undefined,
+      });
+
+      const body = await response.text();
+
+      setResult({
+        status: response.status,
+        headers: Object.fromEntries(response.headers.entries()),
+        body: formatResponseBody(body),
+      });
+    } catch {
+      setResult({
+        status: 0,
+        headers: {},
+        body: 'Request failed. Please try again.',
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -27,14 +102,21 @@ export function TryItOutForm({ endpoint }: IProps) {
         <PlayIcon className={styles.titleIcon} />
         <span>{t('title')}</span>
       </h3>
-      <form className={styles.form}>
+      <form
+        className={styles.form}
+        onSubmit={(event) => {
+          event.preventDefault();
+          void handleSubmit(event.currentTarget);
+        }}
+      >
         {parameters.map((param) => (
           <Input
             key={`${param.in}-${param.name}`}
+            name={getParameterFieldName(param)}
             className={styles.input}
             label={`${param.name} (${param.in})`}
             required={param.required}
-            placeholder={`Enter ${param.in}...`}
+            placeholder={`Enter ${param.name}`}
             withErrorPlug={false}
           />
         ))}
@@ -46,6 +128,7 @@ export function TryItOutForm({ endpoint }: IProps) {
             </label>
             <textarea
               id="request-body-textarea"
+              name="requestBody"
               className={styles.textArea}
               rows={6}
               defaultValue={defaultTextareaValue}
@@ -55,14 +138,30 @@ export function TryItOutForm({ endpoint }: IProps) {
         )}
 
         <div className={styles.actions}>
-          <Button className={styles.button} variant="primary" type="submit">
-            {t('execute')}
+          <Button className={styles.button} variant="primary" type="submit" disabled={isLoading}>
+            {isLoading ? t('executing') : t('execute')}
           </Button>
           <Button className={styles.button} variant="secondary" type="button">
             {t('generateCurl')}
           </Button>
         </div>
       </form>
+      {result && (
+        <div className={styles.result}>
+          <div className={styles.titleBlock}>
+            <h4 className={styles.resultTitle}>{t('response')}</h4>
+            <div>Status: {result.status}</div>
+          </div>
+          <div className={styles.block}>
+            <p className={styles.responseLabel}>Headers</p>
+            <CodeEditor value={JSON.stringify(result.headers, null, 2)} format="json" readonly transparent hideLines />
+          </div>
+          <div className={styles.block}>
+            <p className={styles.responseLabel}>Body</p>
+            <CodeEditor value={result.body} format="json" readonly transparent hideLines />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

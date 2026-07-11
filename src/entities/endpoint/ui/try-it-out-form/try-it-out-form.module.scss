@@ -89,3 +89,35 @@
 .button {
   padding: 0.75rem 2rem;
 }
+
+.result {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.titleBlock {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.resultTitle {
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-primary);
+}
+
+.block {
+  padding: 1rem;
+  background-color: rgb(0 0 0 / 0.3);
+  border: 1px solid rgb(255 255 255 / 0.05);
+  border-radius: 0.75rem;
+}
+
+.responseLabel {
+  color: rgb(255 255 255 / 0.3);
+  font-size: 11px;
+}

@@ -12,9 +12,10 @@ import styles from './endpoint-list.module.scss';
 interface IProps {
   className?: string;
   groups: IEndpointGroup[];
+  serverUrl: string;
 }
 
-export function EndpointList({ className, groups }: IProps) {
+export function EndpointList({ className, groups, serverUrl }: IProps) {
   return (
     <div className={clsx(styles.listWrapper, className)}>
       {groups.map((group) => (
@@ -34,7 +35,7 @@ export function EndpointList({ className, groups }: IProps) {
 
                 <AccordionContent className={styles.content}>
                   <EndpointParameters parameters={endpoint.details.parameters} />
-                  <TryItOutForm endpoint={endpoint} />
+                  <TryItOutForm endpoint={endpoint} serverUrl={serverUrl} />
                 </AccordionContent>
               </AccordionItem>
             ))}

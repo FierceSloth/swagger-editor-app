@@ -48,7 +48,9 @@
     "generateCurl": "Generate cURL",
     "requestBody": "Request Body",
     "required": "required",
-    "invalidJson": "Invalid JSON format"
+    "invalidJson": "Invalid JSON format",
+    "response": "Response",
+    "executing": "Executing..."
   },
   "Footer": {
     "about": "About",
