@@ -1,3 +1,4 @@
+import { useId } from 'react';
 import { useTranslations } from 'next-intl';
 
 import type { IEndpointItem } from '../../types/openapi-types';
@@ -14,12 +15,24 @@ interface IProps {
 
 export function TryItOutForm({ endpoint }: IProps) {
   const t = useTranslations('TryItOut');
+  const textareaId = useId();
 
   const parameters = endpoint.details.parameters || [];
   const requestBody = endpoint.details.requestBody;
 
-  const jsonExample = requestBody?.content['application/json']?.example;
-  const defaultTextareaValue = jsonExample ? JSON.stringify(jsonExample, null, 2) : '';
+  const jsonContent = requestBody?.content['application/json'];
+  let defaultTextareaValue = '';
+
+  if (jsonContent) {
+    if (jsonContent.example !== undefined) {
+      defaultTextareaValue = JSON.stringify(jsonContent.example, null, 2);
+    } else if (jsonContent.examples) {
+      const firstExample = Object.values(jsonContent.examples)[0] as { value?: unknown } | undefined;
+      if (firstExample && firstExample.value !== undefined) {
+        defaultTextareaValue = JSON.stringify(firstExample.value, null, 2);
+      }
+    }
+  }
 
   return (
     <div className={styles.wrapper}>
@@ -34,22 +47,22 @@ export function TryItOutForm({ endpoint }: IProps) {
             className={styles.input}
             label={`${param.name} (${param.in})`}
             required={param.required}
-            placeholder={`Enter ${param.in}...`}
+            placeholder={t('placeholder.param', { in: param.in })}
             withErrorPlug={false}
           />
         ))}
 
-        {requestBody && (
+        {jsonContent && (
           <div className={styles.textareaGroup}>
-            <label className={styles.label} htmlFor="request-body-textarea">
+            <label className={styles.label} htmlFor={textareaId}>
               {t('requestBody')}
             </label>
             <textarea
-              id="request-body-textarea"
+              id={textareaId}
               className={styles.textArea}
               rows={6}
               defaultValue={defaultTextareaValue}
-              placeholder="// JSON data"
+              placeholder={t('placeholder.json')}
             />
           </div>
         )}
