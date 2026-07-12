@@ -8,6 +8,8 @@ import { MethodBadge } from '../method-badge/method-badge';
 import { TryItOutForm } from '../try-it-out-form/try-it-out-form';
 
 import styles from './endpoint-list.module.scss';
+import { RequestBody } from '../request-body/request-body';
+import { ResponseList } from '../response-list/response-list';
 
 interface IProps {
   className?: string;
@@ -35,6 +37,8 @@ export function EndpointList({ className, groups, serverUrl }: IProps) {
 
                 <AccordionContent className={styles.content}>
                   <EndpointParameters parameters={endpoint.details.parameters} />
+                  <RequestBody requestBody={endpoint.details.requestBody} />
+                  <ResponseList responses={endpoint.details.responses} />
                   <TryItOutForm endpoint={endpoint} serverUrl={serverUrl} />
                 </AccordionContent>
               </AccordionItem>

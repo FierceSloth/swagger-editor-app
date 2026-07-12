@@ -53,11 +53,21 @@
     "response": "Ответ",
     "curlCommand": "Команда cURL",
     "copy": "Копировать",
-    "copied": "Скопировано"
+    "copied": "Скопировано",
+    "placeholder": {
+      "param": "Введите {in}...",
+      "json": "// Данные JSON"
+    }
   },
   "Footer": {
     "about": "О проекте",
     "team1": "Создано с",
     "team2": "командой GMT+5 Development"
+  },
+  "RequestBody": {
+    "title": "ТЕЛО ЗАПРОСА"
+  },
+  "ResponseList": {
+    "title": "ОТВЕТЫ"
   }
 }

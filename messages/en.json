@@ -53,11 +53,21 @@
     "executing": "Executing...",
     "curlCommand": "cURL command",
     "copy": "Copy",
-    "copied": "Copied"
+    "copied": "Copied",
+    "placeholder": {
+      "param": "Enter {in}...",
+      "json": "// JSON data"
+    }
   },
   "Footer": {
     "about": "About",
     "team1": "Built with",
     "team2": "by team GMT+5 Development"
+  },
+  "RequestBody": {
+    "title": "REQUEST BODY"
+  },
+  "ResponseList": {
+    "title": "RESPONSES"
   }
 }

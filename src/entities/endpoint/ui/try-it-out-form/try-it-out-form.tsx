@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useId } from 'react';
 import { useTranslations } from 'next-intl';
 import type { IEndpointItem } from '../../types/openapi-types';
 import { Button } from '@/shared/ui/button';
@@ -37,6 +37,7 @@ interface IRequestState {
 
 export function TryItOutForm({ endpoint, serverUrl }: IProps) {
   const t = useTranslations('TryItOut');
+  const textareaId = useId();
 
   const [result, setResult] = useState<IRequestResult | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -52,8 +53,18 @@ export function TryItOutForm({ endpoint, serverUrl }: IProps) {
     : Object.keys(requestBody?.content ?? {})[0];
 
   const mediaType = contentType ? requestBody?.content[contentType] : undefined;
-  const jsonExample = mediaType?.example;
-  const defaultTextareaValue = jsonExample !== undefined ? JSON.stringify(jsonExample, null, 2) : '';
+
+  let defaultTextareaValue = '';
+  if (mediaType) {
+    if (mediaType.example !== undefined) {
+      defaultTextareaValue = JSON.stringify(mediaType.example, null, 2);
+    } else if (mediaType.examples) {
+      const firstExample = Object.values(mediaType.examples)[0] as { value?: unknown } | undefined;
+      if (firstExample && firstExample.value !== undefined) {
+        defaultTextareaValue = JSON.stringify(firstExample.value, null, 2);
+      }
+    }
+  }
 
   const getRequestState = (form: HTMLFormElement): IRequestState => {
     const formData = new FormData(form);
@@ -88,12 +99,12 @@ export function TryItOutForm({ endpoint, serverUrl }: IProps) {
     setResult(null);
 
     try {
-      const { targetUrl, method, headers, body: requestBody } = getRequestState(form);
+      const { targetUrl, method, headers, body: requestBodyValue } = getRequestState(form);
 
       const response = await fetchViaProxy(targetUrl, {
         method,
         headers,
-        body: requestBody,
+        body: requestBodyValue,
       });
 
       const body = await response.text();
@@ -162,6 +173,7 @@ export function TryItOutForm({ endpoint, serverUrl }: IProps) {
         <PlayIcon className={styles.titleIcon} />
         <span>{t('title')}</span>
       </h3>
+
       <form
         ref={formRef}
         className={styles.form}
@@ -177,23 +189,23 @@ export function TryItOutForm({ endpoint, serverUrl }: IProps) {
             className={styles.input}
             label={`${param.name} (${param.in})`}
             required={param.required}
-            placeholder={`Enter ${param.name}`}
+            placeholder={t('placeholder.param', { in: param.in })}
             withErrorPlug={false}
           />
         ))}
 
-        {requestBody && (
+        {mediaType && (
           <div className={styles.textareaGroup}>
-            <label className={styles.label} htmlFor="request-body-textarea">
+            <label className={styles.label} htmlFor={textareaId}>
               {t('requestBody')}
             </label>
             <textarea
-              id="request-body-textarea"
+              id={textareaId}
               name="requestBody"
               className={styles.textArea}
               rows={6}
               defaultValue={defaultTextareaValue}
-              placeholder="// JSON data"
+              placeholder={t('placeholder.json')}
             />
           </div>
         )}
@@ -207,6 +219,7 @@ export function TryItOutForm({ endpoint, serverUrl }: IProps) {
           </Button>
         </div>
       </form>
+
       {result && (
         <div className={styles.result}>
           <div className={styles.titleBlock}>
@@ -223,6 +236,7 @@ export function TryItOutForm({ endpoint, serverUrl }: IProps) {
           </div>
         </div>
       )}
+
       {curlCommand && (
         <div className={styles.curl}>
           <h4 className={styles.resultTitle}>{t('curlCommand')}</h4>
