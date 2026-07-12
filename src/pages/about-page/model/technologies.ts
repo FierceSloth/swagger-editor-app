@@ -4,11 +4,12 @@ import nextjsIcon from '../assets/icons/nextjs.png';
 import scssIcon from '../assets/icons/sass.png';
 import viteIcon from '../assets/icons/vite.png';
 import supabaseIcon from '../assets/icons/supabase.png';
+import type { StaticImageData } from 'next/image';
 
 export interface TechnologyItem {
   id: 'react' | 'typescript' | 'nextjs' | 'sass' | 'vite' | 'supabase';
   name: string;
-  icon: typeof reactIcon;
+  icon: StaticImageData;
 }
 
 export const technologiesConfig: TechnologyItem[] = [
