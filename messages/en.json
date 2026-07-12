@@ -68,9 +68,42 @@
     "history": "History",
     "signOut": "Sign Out"
   },
+  "EndpointParameters": {
+    "title": "Parameters",
+    "name": "Name",
+    "in": "In",
+    "type": "Type",
+    "required": "Required",
+    "description": "Description",
+    "yes": "Yes",
+    "no": "No"
+  },
+  "TryItOut": {
+    "title": "Try It Out",
+    "execute": "Execute",
+    "generateCurl": "Generate cURL",
+    "requestBody": "Request Body",
+    "required": "required",
+    "invalidJson": "Invalid JSON format",
+    "response": "Response",
+    "executing": "Executing...",
+    "curlCommand": "cURL command",
+    "copy": "Copy",
+    "copied": "Copied",
+    "placeholder": {
+      "param": "Enter {in}...",
+      "json": "// JSON data"
+    }
+  },
   "Footer": {
     "about": "About",
     "team1": "Built with",
     "team2": "by team GMT+5 Development"
+  },
+  "RequestBody": {
+    "title": "REQUEST BODY"
+  },
+  "ResponseList": {
+    "title": "RESPONSES"
   }
 }

@@ -2,11 +2,13 @@
 
 import { useMemo, useState, useEffect } from 'react';
 
-import { parseToObject } from '@/shared/lib/parse-to-object';
-import { SwaggerEditor } from '@/widgets/swagger-editor';
 import { useAuth } from '@/features/auth';
 import { loadEditorSchema, saveEditorSchema } from '@/features/schema-persistence/api/editor-schema';
+import { parseToObject } from '@/shared/lib/parse-to-object';
 import { useDebounce } from '@/shared/lib/hooks';
+import { SwaggerEditor } from '@/widgets/swagger-editor';
+import type { IOpenApiSchema } from '@/widgets/swagger-viewer/ui/swagger-viewer';
+import { SwaggerViewer } from '@/widgets/swagger-viewer/ui/swagger-viewer';
 
 import styles from './home-page.module.scss';
 
@@ -35,10 +37,12 @@ export function HomePage() {
     void loadSchema();
   }, [user?.id]);
 
+  // Cast is safe: isSchemaValid is driven by Spectral OAS ruleset,
+  // which validates the full OpenAPI structure (info, title, paths, etc.)
   const parsedSchema = useMemo(() => {
     if (!isSchemaValid || !rawText) return null;
 
-    return parseToObject(rawText);
+    return parseToObject(rawText) as IOpenApiSchema;
   }, [rawText, isSchemaValid]);
 
   useEffect(() => {
@@ -57,18 +61,13 @@ export function HomePage() {
 
     void saveSchema();
   }, [user?.id, debouncedText]);
-
-  console.log(parsedSchema); // TODO: Remove after add Swagger Viewer (<RSS-SE-17>)
-
   return (
     <div className={styles.container}>
       <div className={styles.editor}>
         <SwaggerEditor value={rawText} onChange={setRawText} onValidationChange={setIsSchemaValid} />
       </div>
       <div className={styles.viewer}>
-        <div className={styles.stub}>
-          <h2>Very Cool SwaggerViewer</h2>
-        </div>
+        <SwaggerViewer schema={parsedSchema} />
       </div>
     </div>
   );
