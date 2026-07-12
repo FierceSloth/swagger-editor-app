@@ -58,5 +58,11 @@
     "about": "About",
     "team1": "Built with",
     "team2": "by team GMT+5 Development"
+  },
+  "RequestBody": {
+    "title": "REQUEST BODY"
+  },
+  "ResponseList": {
+    "title": "RESPONSES"
   }
 }
