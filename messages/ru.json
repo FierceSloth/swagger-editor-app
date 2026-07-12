@@ -6,10 +6,46 @@
     "title": "О проекте"
   },
   "Login": {
-    "title": "Вход"
+    "title": "Вход",
+    "subtitle": "Введите ваши данные для доступа к ядру AURA.",
+    "emailLabel": "Адрес электронной почты",
+    "passcodeLabel": "Пароль",
+    "submitButton": "ВОЙТИ",
+    "switchText": "Нет аккаунта?",
+    "switchLink": "Регистрация",
+    "errors": {
+      "invalidEmail": "Неверный формат email",
+      "passwordMinLength": "Минимум 8 символов",
+      "passwordNeedLetter": "Нужна хотя бы 1 буква",
+      "passwordNeedNumber": "Нужна хотя бы 1 цифра",
+      "passwordNeedSpecial": "Нужен хотя бы 1 специальный символ",
+      "invalidCredentials": "Неверный email или пароль",
+      "userAlreadyExists": "Пользователь с таким email уже зарегистрирован",
+      "tooManyRequests": "Слишком много попыток, попробуйте позже",
+      "unknownError": "Что-то пошло не так, попробуйте снова"
+    }
   },
   "Register": {
-    "title": "Регистрация"
+    "title": "Регистрация",
+    "subtitle": "Создайте своё защищённое присутствие в сети AURA.",
+    "emailLabel": "Адрес электронной почты",
+    "passcodeLabel": "Пароль",
+    "confirmPasscodeLabel": "Подтвердите пароль",
+    "submitButton": "ЗАРЕГИСТРИРОВАТЬСЯ",
+    "switchText": "Уже есть аккаунт?",
+    "switchLink": "Войти",
+    "errors": {
+      "invalidEmail": "Неверный формат email",
+      "passwordMinLength": "Минимум 8 символов",
+      "passwordNeedLetter": "Нужна хотя бы 1 буква",
+      "passwordNeedNumber": "Нужна хотя бы 1 цифра",
+      "passwordNeedSpecial": "Нужен хотя бы 1 специальный символ",
+      "passcodeMismatch": "Пароли не совпадают",
+      "invalidCredentials": "Неверный email или пароль",
+      "userAlreadyExists": "Пользователь с таким email уже зарегистрирован",
+      "tooManyRequests": "Слишком много попыток, попробуйте позже",
+      "unknownError": "Что-то пошло не так, попробуйте снова"
+    }
   },
   "NotFound": {
     "title": "Не найдено"
