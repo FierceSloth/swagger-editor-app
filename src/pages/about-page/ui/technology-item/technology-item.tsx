@@ -1,10 +1,10 @@
-import Image, { type StaticImageData } from 'next/image';
+import Image from 'next/image';
 
 import styles from './technology-item.module.scss';
 
 interface IProps {
   name: string;
-  icon: StaticImageData;
+  icon: string;
 }
 
 export function TechnologyItem({ name, icon }: IProps) {

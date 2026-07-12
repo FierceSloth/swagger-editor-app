@@ -8,18 +8,16 @@ export async function PoweredBySection() {
   const t = await getTranslations('PoweredBy');
 
   return (
-    <section className={styles.section}>
-      <div className={styles.container}>
-        <div className={styles.heading}>
-          <h2 className={styles.title}>{t('title')}</h2>
-        </div>
-
-        <div className={styles.grid}>
-          {technologiesConfig.map((technology) => (
-            <TechnologyItem key={technology.id} name={technology.name} icon={technology.icon} />
-          ))}
-        </div>
+    <div className={styles.container}>
+      <div className={styles.heading}>
+        <h2 className={styles.title}>{t('title')}</h2>
       </div>
-    </section>
+
+      <div className={styles.grid}>
+        {technologiesConfig.map((technology) => (
+          <TechnologyItem key={technology.id} name={technology.name} icon={technology.icon} />
+        ))}
+      </div>
+    </div>
   );
 }

@@ -1,46 +1,38 @@
-import reactIcon from '../assets/icons/react.png';
-import typescriptIcon from '../assets/icons/typescript.png';
-import nextjsIcon from '../assets/icons/nextjs.png';
-import scssIcon from '../assets/icons/sass.png';
-import viteIcon from '../assets/icons/vite.png';
-import supabaseIcon from '../assets/icons/supabase.png';
-import type { StaticImageData } from 'next/image';
-
 export interface TechnologyItem {
   id: 'react' | 'typescript' | 'nextjs' | 'sass' | 'vite' | 'supabase';
   name: string;
-  icon: StaticImageData;
+  icon: string;
 }
 
 export const technologiesConfig: TechnologyItem[] = [
   {
     id: 'react',
     name: 'React',
-    icon: reactIcon,
+    icon: '/icons/react.png',
   },
   {
     id: 'typescript',
     name: 'TypeScript',
-    icon: typescriptIcon,
+    icon: '/icons/typescript.png',
   },
   {
     id: 'nextjs',
     name: 'Next.js',
-    icon: nextjsIcon,
+    icon: '/icons/nextjs.png',
   },
   {
     id: 'sass',
     name: 'SASS',
-    icon: scssIcon,
+    icon: '/icons/sass.png',
   },
   {
     id: 'vite',
     name: 'Vite',
-    icon: viteIcon,
+    icon: '/icons/vite.png',
   },
   {
     id: 'supabase',
     name: 'Supabase',
-    icon: supabaseIcon,
+    icon: '/icons/supabase.png',
   },
 ];
