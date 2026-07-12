@@ -6,10 +6,46 @@
     "title": "About"
   },
   "Login": {
-    "title": "Sign In"
+    "title": "Sign In",
+    "subtitle": "Enter your credentials to access the AURA core.",
+    "emailLabel": "Email Address",
+    "passcodeLabel": "Access Passcode",
+    "submitButton": "SIGN IN",
+    "switchText": "Don't have an account?",
+    "switchLink": "Sign Up",
+    "errors": {
+      "invalidEmail": "Invalid email format",
+      "passwordMinLength": "Min 8 characters",
+      "passwordNeedLetter": "Need at least 1 letter",
+      "passwordNeedNumber": "Need at least 1 number",
+      "passwordNeedSpecial": "Need at least 1 special character",
+      "invalidCredentials": "Invalid email or password",
+      "userAlreadyExists": "A user with this email already exists",
+      "tooManyRequests": "Too many attempts, please try again later",
+      "unknownError": "Something went wrong, please try again"
+    }
   },
   "Register": {
-    "title": "Sign Up"
+    "title": "Sign Up",
+    "subtitle": "Establish your secure presence within the AURA network.",
+    "emailLabel": "Email Address",
+    "passcodeLabel": "Access Passcode",
+    "confirmPasscodeLabel": "Confirm Passcode",
+    "submitButton": "SIGN UP",
+    "switchText": "Already have an account?",
+    "switchLink": "Sign In",
+    "errors": {
+      "invalidEmail": "Invalid email format",
+      "passwordMinLength": "Min 8 characters",
+      "passwordNeedLetter": "Need at least 1 letter",
+      "passwordNeedNumber": "Need at least 1 number",
+      "passcodeMismatch": "Passwords do not match",
+      "passwordNeedSpecial": "Need at least 1 special character",
+      "invalidCredentials": "Invalid email or password",
+      "userAlreadyExists": "A user with this email already exists",
+      "tooManyRequests": "Too many attempts, please try again later",
+      "unknownError": "Something went wrong, please try again"
+    }
   },
   "NotFound": {
     "title": "Not Found"
