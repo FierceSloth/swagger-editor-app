@@ -42,18 +42,6 @@
     "yes": "Да",
     "no": "Нет"
   },
-  "TryItOut": {
-    "title": "Попробовать",
-    "execute": "Выполнить",
-    "generateCurl": "Сгенерировать cURL",
-    "requestBody": "Тело запроса",
-    "required": "обязательно",
-    "invalidJson": "Неверный формат JSON",
-    "placeholder": {
-      "param": "Введите {in}...",
-      "json": "// Данные JSON"
-    }
-  },
   "Footer": {
     "about": "О проекте",
     "team1": "Создано с",

@@ -1,12 +1,8 @@
-import clsx from 'clsx';
-
-import type { IEndpointGroup } from '../../types/openapi-types';
-
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/shared/ui/accordion';
+import clsx from 'clsx';
+import type { IEndpointGroup } from '../../types/openapi-types';
 import { EndpointParameters } from '../endpoint-parameters/endpoint-parameters';
 import { MethodBadge } from '../method-badge/method-badge';
-import { TryItOutForm } from '../try-it-out-form/try-it-out-form';
-
 import styles from './endpoint-list.module.scss';
 import { RequestBody } from '../request-body/request-body';
 import { ResponseList } from '../response-list/response-list';
@@ -34,11 +30,10 @@ export function EndpointList({ className, groups }: IProps) {
                   </div>
                 </AccordionTrigger>
 
-                <AccordionContent className={styles.content}>
+                <AccordionContent>
                   <EndpointParameters parameters={endpoint.details.parameters} />
                   <RequestBody requestBody={endpoint.details.requestBody} />
                   <ResponseList responses={endpoint.details.responses} />
-                  <TryItOutForm endpoint={endpoint} />
                 </AccordionContent>
               </AccordionItem>
             ))}

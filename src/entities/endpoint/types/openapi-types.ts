@@ -25,7 +25,6 @@ export interface IOpenApiOperation {
   description?: string;
   operationId?: string;
   parameters?: IOpenApiParameter[];
-  requestBody?: IOpenApiRequestBody;
   [key: string]: unknown;
   requestBody?: IOpenApiRequestBody;
   responses?: IOpenApiResponses;
@@ -38,28 +37,6 @@ export type IOpenApiPathItem = {
   $ref?: string;
   [key: string]: unknown;
 };
-
-export interface IOpenApiSchema {
-  type?: string;
-  properties?: Record<string, unknown>;
-  required?: string[];
-  [key: string]: unknown;
-}
-
-export interface IOpenApiMediaType {
-  schema?: IOpenApiSchema;
-  example?: unknown;
-  examples?: Record<string, unknown>;
-}
-
-export interface IOpenApiRequestBody {
-  description?: string;
-  required?: boolean;
-  content: {
-    'application/json'?: IOpenApiMediaType;
-    [mediaType: string]: IOpenApiMediaType | undefined;
-  };
-}
 
 export interface IEndpointItem {
   id: string;
