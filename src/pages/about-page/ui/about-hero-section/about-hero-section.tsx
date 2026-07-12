@@ -1,7 +1,8 @@
-import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
 
 import styles from './about-hero-section.module.scss';
+import { GlassCard } from '@/shared/ui/glass-card';
+import { ArrowIcon } from '@/shared/ui/arrow-icon';
 
 export async function AboutHeroSection() {
   const t = await getTranslations('AboutHero');
@@ -9,6 +10,9 @@ export async function AboutHeroSection() {
   return (
     <section className={styles.hero}>
       <div className={styles.container}>
+        <div className={styles.containerLabel}>
+          <GlassCard className={styles.courseLabel}>RS</GlassCard>
+        </div>
         <div className={styles.content}>
           <p className={styles.label}>{t('label')}</p>
 
@@ -16,15 +20,10 @@ export async function AboutHeroSection() {
 
           <p className={styles.description}>{t('description')}</p>
 
-          <Link
-            className={styles.link}
-            href="https://rs.school/courses/reactjs"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a className={styles.link} href="https://rs.school/courses/reactjs" target="_blank" rel="noopener noreferrer">
             {t('courseLink')}
-            <span className={styles.arrow}>arrow</span>
-          </Link>
+            <ArrowIcon className={styles.arrow} />
+          </a>
         </div>
       </div>
     </section>

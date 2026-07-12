@@ -1,0 +1,86 @@
+@use '@/app/styles/abstract/mixins' as *;
+
+.container {
+  display: flex;
+  gap: 48px;
+  align-items: center;
+  width: 100%;
+  padding: 60px 0;
+}
+
+.containerLabel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.courseLabel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 250px;
+  aspect-ratio: 1/1;
+  border-radius: 35px;
+  font-size: 80px;
+  color: #d4bd23;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+  gap: 24px;
+}
+
+.label {
+  margin: 0;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0;
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+}
+
+.description {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+.link {
+  display: flex;
+  gap: 5px;
+  color: var(--text-primary);
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition: 1.5s;
+}
+
+.link:hover {
+  color: var(--text-secondary);
+}
+
+.arrow {
+  width: 10px;
+  aspect-ratio: 1/1;
+  color: currentColor;
+}
