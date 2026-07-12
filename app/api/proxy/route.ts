@@ -1,5 +1,6 @@
 import type { NextRequest } from 'next/server';
 import getProxyHeaders from './getProxyHeaders';
+import { createClient } from '@/shared/api/supabase/server';
 
 const ALLOWED_PROTOCOLS = ['http:', 'https:'];
 
@@ -27,22 +28,79 @@ async function proxyRequest(request: NextRequest): Promise<Response> {
 
   const body = method === 'GET' || method === 'HEAD' ? undefined : await request.arrayBuffer();
 
+  const startedAt = Date.now();
+  const requestSize = body ? body.byteLength : 0;
+
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), 10_000);
 
   try {
-    return await fetch(parsedTargetUrl.toString(), {
+    const response = await fetch(parsedTargetUrl.toString(), {
       method,
       headers,
       body,
       signal: controller.signal,
     });
-  } catch (error) {
-    if (error instanceof DOMException && error.name === 'AbortError') {
-      return Response.json({ error: 'Proxy request timeout' }, { status: 504 });
+
+    const responseBuffer = await response.arrayBuffer();
+    const duration = Date.now() - startedAt;
+    const responseSize = responseBuffer.byteLength;
+
+    const supabase = await createClient();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    if (user) {
+      await supabase.from('history').insert({
+        user_id: user.id,
+        url: targetUrl,
+        method,
+        status: response.status,
+        duration,
+        request_size: requestSize,
+        response_size: responseSize,
+        timestamp: new Date().toISOString(),
+        error_details: response.ok ? null : `HTTP ${response.status}`,
+      });
     }
 
-    return Response.json({ error: 'Failed to proxy request' }, { status: 502 });
+    return new Response(responseBuffer, {
+      status: response.status,
+      statusText: response.statusText,
+      headers: response.headers,
+    });
+  } catch (error) {
+    const duration = Date.now() - startedAt;
+
+    const supabase = await createClient();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    let errorDetails = 'Failed to proxy request';
+    let status = 502;
+
+    if (error instanceof DOMException && error.name === 'AbortError') {
+      errorDetails = 'Proxy request timeout';
+      status = 504;
+    }
+
+    if (user) {
+      await supabase.from('history').insert({
+        user_id: user.id,
+        url: targetUrl,
+        method,
+        status,
+        duration,
+        request_size: requestSize,
+        response_size: 0,
+        timestamp: new Date().toISOString(),
+        error_details: errorDetails,
+      });
+    }
+
+    return Response.json({ error: errorDetails }, { status });
   } finally {
     clearTimeout(timeoutId);
   }
