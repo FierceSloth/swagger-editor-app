@@ -50,10 +50,7 @@
     "required": "обязательно",
     "invalidJson": "Неверный формат JSON",
     "executing": "Выполнение...",
-    "response": "Ответ",
-    "curlCommand": "Команда cURL",
-    "copy": "Копировать",
-    "copied": "Скопировано"
+    "response": "Ответ"
   },
   "Footer": {
     "about": "О проекте",
