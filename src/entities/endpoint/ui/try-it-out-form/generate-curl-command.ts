@@ -10,7 +10,7 @@ function quoteShellValue(value: string): string {
 }
 
 export function generateCurlCommand({ method, url, headers, body }: IGenerateCurlCommandParams): string {
-  const parts = ['curl', '-X', method, quoteShellValue(url)];
+  const parts = ['curl', '-X', quoteShellValue(method), quoteShellValue(url)];
 
   headers.forEach((value, key) => {
     parts.push('-H', quoteShellValue(`${key}: ${value}`));

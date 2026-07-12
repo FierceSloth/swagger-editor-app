@@ -121,6 +121,10 @@ export function TryItOutForm({ endpoint, serverUrl }: IProps) {
       return;
     }
 
+    if (!form.reportValidity()) {
+      return;
+    }
+
     try {
       const { targetUrl, method, headers, body } = getRequestState(form);
 
