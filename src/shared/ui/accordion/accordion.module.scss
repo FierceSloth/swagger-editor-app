@@ -57,6 +57,7 @@
   color: var(--text-secondary);
   font-size: 12px;
   background-color: var(--bg-surface-1);
+  border-top: 1px solid var(--bg-surface-2);
   overflow: hidden;
 
   &[data-state='open'] {

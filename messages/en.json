@@ -49,6 +49,11 @@
     "requestBody": "Request Body",
     "required": "required",
     "invalidJson": "Invalid JSON format",
+    "response": "Response",
+    "executing": "Executing...",
+    "curlCommand": "cURL command",
+    "copy": "Copy",
+    "copied": "Copied",
     "placeholder": {
       "param": "Enter {in}...",
       "json": "// JSON data"

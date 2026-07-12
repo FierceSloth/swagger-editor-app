@@ -28,6 +28,8 @@ interface IProps {
 export const SwaggerViewer = memo(({ schema }: IProps) => {
   if (!schema) return null;
 
+  const serverUrl = schema.servers?.[0]?.url ?? '';
+
   const groups = groupEndpoints(schema.paths);
   return (
     <div className={styles.wrapper}>
@@ -51,7 +53,7 @@ export const SwaggerViewer = memo(({ schema }: IProps) => {
       </header>
 
       <div className={styles.scrollableList}>
-        <EndpointList groups={groups} />
+        <EndpointList groups={groups} serverUrl={serverUrl} />
       </div>
     </div>
   );

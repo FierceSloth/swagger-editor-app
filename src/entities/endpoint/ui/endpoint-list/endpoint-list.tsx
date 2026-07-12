@@ -14,9 +14,10 @@ import { ResponseList } from '../response-list/response-list';
 interface IProps {
   className?: string;
   groups: IEndpointGroup[];
+  serverUrl: string;
 }
 
-export function EndpointList({ className, groups }: IProps) {
+export function EndpointList({ className, groups, serverUrl }: IProps) {
   return (
     <div className={clsx(styles.listWrapper, className)}>
       {groups.map((group) => (
@@ -38,7 +39,7 @@ export function EndpointList({ className, groups }: IProps) {
                   <EndpointParameters parameters={endpoint.details.parameters} />
                   <RequestBody requestBody={endpoint.details.requestBody} />
                   <ResponseList responses={endpoint.details.responses} />
-                  <TryItOutForm endpoint={endpoint} />
+                  <TryItOutForm endpoint={endpoint} serverUrl={serverUrl} />
                 </AccordionContent>
               </AccordionItem>
             ))}
