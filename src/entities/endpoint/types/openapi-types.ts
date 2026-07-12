@@ -1,13 +1,15 @@
 import type { HttpMethod } from './http-types';
 
 export interface IOpenApiSchema {
-  type?: 'object' | 'array' | 'string' | 'integer' | 'number' | 'boolean';
+  type?: 'object' | 'array' | 'string' | 'integer' | 'number' | 'boolean' | (string & {});
   properties?: Record<string, IOpenApiSchema>;
   items?: IOpenApiSchema;
   example?: unknown;
   default?: unknown;
   enum?: unknown[];
   $ref?: string;
+  required?: string[];
+  [key: string]: unknown;
 }
 
 export interface IOpenApiParameter {
@@ -25,9 +27,9 @@ export interface IOpenApiOperation {
   description?: string;
   operationId?: string;
   parameters?: IOpenApiParameter[];
-  [key: string]: unknown;
   requestBody?: IOpenApiRequestBody;
   responses?: IOpenApiResponses;
+  [key: string]: unknown;
 }
 
 export type IOpenApiPathItem = {
@@ -37,6 +39,21 @@ export type IOpenApiPathItem = {
   $ref?: string;
   [key: string]: unknown;
 };
+
+export interface IOpenApiMediaType {
+  schema?: IOpenApiSchema;
+  example?: unknown;
+  examples?: Record<string, unknown>;
+}
+
+export interface IOpenApiRequestBody {
+  description?: string;
+  required?: boolean;
+  content: {
+    'application/json'?: IOpenApiMediaType;
+    [mediaType: string]: IOpenApiMediaType | undefined;
+  };
+}
 
 export interface IEndpointItem {
   id: string;
@@ -49,17 +66,6 @@ export interface IEndpointItem {
 export interface IEndpointGroup {
   tag: string;
   endpoints: IEndpointItem[];
-}
-
-export interface IOpenApiMediaType {
-  schema?: IOpenApiSchema;
-  example?: unknown;
-}
-
-export interface IOpenApiRequestBody {
-  description?: string;
-  required?: boolean;
-  content: Record<string, IOpenApiMediaType>;
 }
 
 export interface IOpenApiResponse {
