@@ -4,6 +4,10 @@
   flex-direction: column;
   gap: 20px;
   padding: 10px 0;
+
+  @media (max-width: 700px) {
+    max-width: 100%;
+  }
 }
 
 .title {
@@ -17,6 +21,6 @@
 .description {
   margin: 0;
   color: var(--text-secondary);
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.65;
 }

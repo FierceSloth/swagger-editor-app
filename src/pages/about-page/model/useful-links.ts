@@ -2,7 +2,7 @@ import type { ComponentType, SVGProps } from 'react';
 
 import { BracketsIcon } from '@/shared/ui/brackets-icon';
 import { GitHubIcon } from '@/shared/ui/github-icon';
-import { GraduationCapIcon } from '@/shared/ui/graduation-cap-icon/graduation-cap-icon';
+import { GraduationCapIcon } from '@/shared/ui/graduation-cap-icon';
 
 export interface UsefulLinkConfigItem {
   id: 'rs-school' | 'openapi' | 'github';

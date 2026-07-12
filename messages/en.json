@@ -87,17 +87,17 @@
     "title": "Core Contributors",
     "items": {
       "dastan": {
-        "name": "Dastan",
+        "name": "Dastan (FierceSloth)",
         "role": "Team Lead // Frontend",
         "description": "Architected the frontend application and led the implementation of the editor and Viewer core features, including OpenAPI validation, schema synchronization, JSON/YAML conversion, and the interactive Try-It-Out form.\nAlso set up the project's foundational infrastructure, including Next.js initialization, the UI Kit, auth form validation, and the responsive split-view layout for the Editor and Viewer."
       },
       "meruert": {
-        "name": "Meruert",
+        "name": "Meruert (merucoding)",
         "role": "Developer // Frontend",
-        "description": "Set up the core application architecture, including routing, i18n, API request proxying, and shared UI mechanisms. \nImplemented the Header and Footer, global loading and error states, as well as toast notifications, Spinner, and the project’s base pages."
+        "description": "Set up the core application architecture, including routing, i18n, API request proxying, and shared UI mechanisms. \nImplemented the Header and Footer, global loading and error states, as well as toast notifications, Spinner, and the project’s base pages. \nAlso implemented the Viewer Try-It-Out flow, including sending form data through a proxy server and rendering the response status code, headers, and body."
       },
       "anna": {
-        "name": "Anna",
+        "name": "Anna (dilmun1101)",
         "role": "Developer // Frontend",
         "description": "Implemented the About page, Supabase integration, and core authentication flows, including session management, protected routes, and user schema persistence.\nAlso configured CI/CD processes, including automated checks and preview deployments for project updates."
       }

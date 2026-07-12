@@ -32,9 +32,16 @@
   gap: 20px;
 }
 
+.githubLink:hover .githubIcon {
+  color: #fff;
+  transform: translateY(-2px);
+  transition: 1.5s;
+}
+
 .githubIcon {
   width: 18px;
   height: 18px;
+  color: var(--text-secondary);
 }
 
 .description {
