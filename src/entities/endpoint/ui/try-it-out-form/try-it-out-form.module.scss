@@ -121,3 +121,12 @@
   color: rgb(255 255 255 / 0.3);
   font-size: 11px;
 }
+
+.curl {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  button {
+    align-self: start;
+  }
+}

@@ -50,7 +50,10 @@
     "required": "required",
     "invalidJson": "Invalid JSON format",
     "response": "Response",
-    "executing": "Executing..."
+    "executing": "Executing...",
+    "curlCommand": "cURL command",
+    "copy": "Copy",
+    "copied": "Copied"
   },
   "Footer": {
     "about": "About",

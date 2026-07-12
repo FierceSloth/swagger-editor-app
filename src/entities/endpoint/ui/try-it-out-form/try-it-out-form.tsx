@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import type { IEndpointItem } from '../../types/openapi-types';
 import { Button } from '@/shared/ui/button';
@@ -13,6 +13,7 @@ import { buildHeaders } from './build-headers';
 import { getFormStringValue } from './get-form-string-value';
 import { formatResponseBody } from './format-response-body';
 import { getParameterFieldName } from './get-parameter-field-name';
+import { generateCurlCommand } from './generate-curl-command';
 
 import styles from './try-it-out-form.module.scss';
 
@@ -27,11 +28,21 @@ interface IRequestResult {
   body: string;
 }
 
+interface IRequestState {
+  targetUrl: string;
+  method: string;
+  headers: Headers;
+  body?: string;
+}
+
 export function TryItOutForm({ endpoint, serverUrl }: IProps) {
   const t = useTranslations('TryItOut');
 
   const [result, setResult] = useState<IRequestResult | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [curlCommand, setCurlCommand] = useState('');
+  const [isCopied, setIsCopied] = useState(false);
+  const formRef = useRef<HTMLFormElement | null>(null);
 
   const parameters = endpoint.details.parameters || [];
   const requestBody = endpoint.details.requestBody;
@@ -41,41 +52,48 @@ export function TryItOutForm({ endpoint, serverUrl }: IProps) {
     : Object.keys(requestBody?.content ?? {})[0];
 
   const mediaType = contentType ? requestBody?.content[contentType] : undefined;
-
   const jsonExample = mediaType?.example;
-
   const defaultTextareaValue = jsonExample !== undefined ? JSON.stringify(jsonExample, null, 2) : '';
+
+  const getRequestState = (form: HTMLFormElement): IRequestState => {
+    const formData = new FormData(form);
+
+    const targetUrl = buildUrl({
+      serverUrl,
+      path: endpoint.path,
+      parameters,
+      formData,
+    });
+
+    const headers = buildHeaders({
+      parameters,
+      formData,
+      contentType,
+    });
+
+    const requestBodyValue = getFormStringValue(formData, 'requestBody').trim();
+    const method = endpoint.method.toUpperCase();
+    const shouldSendBody = method !== 'GET' && method !== 'HEAD' && requestBodyValue.length > 0;
+
+    return {
+      targetUrl,
+      method,
+      headers,
+      body: shouldSendBody ? requestBodyValue : undefined,
+    };
+  };
 
   const handleSubmit = async (form: HTMLFormElement) => {
     setIsLoading(true);
     setResult(null);
 
     try {
-      const formData = new FormData(form);
-
-      const targetUrl = buildUrl({
-        serverUrl,
-        path: endpoint.path,
-        parameters,
-        formData,
-      });
-
-      const headers = buildHeaders({
-        parameters,
-        formData,
-        contentType,
-      });
-
-      const requestBodyValue = getFormStringValue(formData, 'requestBody').trim();
-
-      const method = endpoint.method.toUpperCase();
-
-      const shouldSendBody = method !== 'GET' && method !== 'HEAD' && requestBodyValue.length > 0;
+      const { targetUrl, method, headers, body: requestBody } = getRequestState(form);
 
       const response = await fetchViaProxy(targetUrl, {
         method,
         headers,
-        body: shouldSendBody ? requestBodyValue : undefined,
+        body: requestBody,
       });
 
       const body = await response.text();
@@ -96,6 +114,48 @@ export function TryItOutForm({ endpoint, serverUrl }: IProps) {
     }
   };
 
+  const handleGenerateCurl = () => {
+    const form = formRef.current;
+
+    if (!form) {
+      return;
+    }
+
+    if (!form.reportValidity()) {
+      return;
+    }
+
+    try {
+      const { targetUrl, method, headers, body } = getRequestState(form);
+
+      const command = generateCurlCommand({
+        method,
+        url: targetUrl,
+        headers,
+        body,
+      });
+
+      setCurlCommand(command);
+      setIsCopied(false);
+    } catch {
+      setCurlCommand('');
+      setIsCopied(false);
+    }
+  };
+
+  const handleCopyCurl = async () => {
+    if (!curlCommand) {
+      return;
+    }
+
+    try {
+      await navigator.clipboard.writeText(curlCommand);
+      setIsCopied(true);
+    } catch {
+      setIsCopied(false);
+    }
+  };
+
   return (
     <div className={styles.wrapper}>
       <h3 className={styles.title}>
@@ -103,6 +163,7 @@ export function TryItOutForm({ endpoint, serverUrl }: IProps) {
         <span>{t('title')}</span>
       </h3>
       <form
+        ref={formRef}
         className={styles.form}
         onSubmit={(event) => {
           event.preventDefault();
@@ -141,7 +202,7 @@ export function TryItOutForm({ endpoint, serverUrl }: IProps) {
           <Button className={styles.button} variant="primary" type="submit" disabled={isLoading}>
             {isLoading ? t('executing') : t('execute')}
           </Button>
-          <Button className={styles.button} variant="secondary" type="button">
+          <Button className={styles.button} variant="secondary" type="button" onClick={handleGenerateCurl}>
             {t('generateCurl')}
           </Button>
         </div>
@@ -160,6 +221,17 @@ export function TryItOutForm({ endpoint, serverUrl }: IProps) {
             <p className={styles.responseLabel}>Body</p>
             <CodeEditor value={result.body} format="json" readonly transparent hideLines />
           </div>
+        </div>
+      )}
+      {curlCommand && (
+        <div className={styles.curl}>
+          <h4 className={styles.resultTitle}>{t('curlCommand')}</h4>
+          <div className={styles.block}>
+            <CodeEditor value={curlCommand} format="json" readonly transparent hideLines />
+          </div>
+          <Button type="button" variant="secondary" onClick={() => void handleCopyCurl()}>
+            {isCopied ? t('copied') : t('copy')}
+          </Button>
         </div>
       )}
     </div>
