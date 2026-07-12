@@ -42,6 +42,18 @@
     "yes": "Yes",
     "no": "No"
   },
+  "TryItOut": {
+    "title": "Try It Out",
+    "execute": "Execute",
+    "generateCurl": "Generate cURL",
+    "requestBody": "Request Body",
+    "required": "required",
+    "invalidJson": "Invalid JSON format",
+    "placeholder": {
+      "param": "Enter {in}...",
+      "json": "// JSON data"
+    }
+  },
   "Footer": {
     "about": "About",
     "team1": "Built with",
