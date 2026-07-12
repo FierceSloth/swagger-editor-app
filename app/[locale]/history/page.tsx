@@ -1,11 +1,17 @@
-import { getTranslations } from 'next-intl/server';
+import { redirect } from 'next/navigation';
+import { HistoryPage } from '@/pages/history-page';
+import { loadHistory } from '@/features/history/api/history';
+import { getCurrentUser } from '@/shared/api/supabase';
+import { ROUTES } from '@/shared/config/routes';
 
 export default async function Page() {
-  const t = await getTranslations('History');
+  const user = await getCurrentUser();
 
-  return (
-    <main>
-      <h1>{t('title')}</h1>
-    </main>
-  );
+  if (!user?.id) {
+    redirect(ROUTES.HOME);
+  }
+
+  const items = await loadHistory(user.id);
+
+  return <HistoryPage items={items} />;
 }
