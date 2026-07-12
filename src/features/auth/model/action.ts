@@ -45,7 +45,7 @@ export async function signInWithPassword(formData: FormData): Promise<AuthAction
   redirect(ROUTES.HOME);
 }
 
-export async function signUp(formData: FormData) {
+export async function signUp(formData: FormData): Promise<AuthActionResult | void> {
   const email = getFormValue(formData, 'email');
   const password = getFormValue(formData, 'password');
 
