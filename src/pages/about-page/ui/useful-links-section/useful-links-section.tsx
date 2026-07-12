@@ -20,7 +20,6 @@ export async function UsefulLinksSection() {
     <div className={styles.container}>
       <div className={styles.heading}>
         <h2 className={styles.title}>{t('title')}</h2>
-        <div className={styles.line} />
       </div>
 
       <div className={styles.grid}>
