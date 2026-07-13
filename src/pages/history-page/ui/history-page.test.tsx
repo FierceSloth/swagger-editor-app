@@ -11,8 +11,12 @@ vi.mock('next-intl/server', () => ({
   },
 }));
 
-vi.mock('next/link', () => ({
-  default: ({ children, href }: { children: React.ReactNode; href: string }) => <a href={href}>{children}</a>,
+vi.mock('@/shared/config/i18n/navigation', () => ({
+  Link: ({ children, href, className }: { children: React.ReactNode; href: string; className?: string }) => (
+    <a href={href} className={className}>
+      {children}
+    </a>
+  ),
 }));
 
 vi.mock('./history-intro/history-intro', () => ({
@@ -39,14 +43,18 @@ const mockItems: HistoryItem[] = [
 ];
 
 describe('HistoryPage Component', () => {
-  it('should render empty history message and back link when no items are provided', async () => {
+  it('should render empty history message and editor link when no items are provided', async () => {
     const Resolved = await HistoryPage({ items: [] });
     render(Resolved);
 
     expect(screen.getByTestId('empty-history-message')).toBeInTheDocument();
-    const link = screen.getByRole('link', { name: messages.History.goToEditor });
-    expect(link).toBeInTheDocument();
-    expect(link).toHaveAttribute('href', '/home');
+    const editorLink = screen.getByRole('link', { name: /go to editor/i });
+    expect(editorLink).toBeInTheDocument();
+    expect(editorLink).toHaveAttribute('href', '/home');
+
+    const viewerLink = screen.getByRole('link', { name: /go to viewer/i });
+    expect(viewerLink).toBeInTheDocument();
+    expect(viewerLink).toHaveAttribute('href', '/home');
   });
 
   it('should render page header and request cards when items are provided', async () => {

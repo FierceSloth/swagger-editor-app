@@ -11,10 +11,12 @@ vi.mock('next-intl/server', () => ({
 }));
 
 describe('EmptyHistoryMessage Component', () => {
-  it('should render correct empty history title and description', async () => {
+  it('should render icon ring, scan label, badge, title and description', async () => {
     const Resolved = await EmptyHistoryMessage();
     render(Resolved);
 
+    expect(screen.getByText('SCANNING_STREAM')).toBeInTheDocument();
+    expect(screen.getByText('SYSTEM.STUB // NO_RECORDS_FOUND')).toBeInTheDocument();
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(messages.History.emptyTitle);
     expect(screen.getByText(messages.History.emptyDescription)).toBeInTheDocument();
   });
