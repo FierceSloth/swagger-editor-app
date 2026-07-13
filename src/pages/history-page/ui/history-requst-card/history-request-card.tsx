@@ -1,10 +1,13 @@
 import type { HistoryItem } from '@/features/history/api/history';
+import { getTranslations } from 'next-intl/server';
 
 interface HistoryRequestCardProps {
   item: HistoryItem;
 }
 
-export function HistoryRequestCard({ item }: HistoryRequestCardProps) {
+export async function HistoryRequestCard({ item }: HistoryRequestCardProps) {
+  const t = await getTranslations('History');
+
   return (
     <div>
       <div>
@@ -13,22 +16,34 @@ export function HistoryRequestCard({ item }: HistoryRequestCardProps) {
       </div>
 
       <div>
-        <span>Status: {item.status}</span>
-        <span>Duration: {item.duration} ms</span>
+        <span>
+          {t('status')}: {item.status}
+        </span>
+        <span>
+          {t('duration')}: {item.duration} ms
+        </span>
       </div>
 
       <div>
-        <span>{new Date(item.timestamp).toLocaleString()}</span>
+        <span>
+          {t('timestamp')}: {new Date(item.timestamp).toLocaleString()}
+        </span>
       </div>
 
       <div>
-        <span>Request size: {item.request_size ?? 0} B</span>
-        <span>Response size: {item.response_size ?? 0} B</span>
+        <span>
+          {t('requestSize')}: {item.request_size ?? 0} B
+        </span>
+        <span>
+          {t('responseSize')}: {item.response_size ?? 0} B
+        </span>
       </div>
 
       {item.error_details && (
         <div>
-          <span>Error: {item.error_details}</span>
+          <span>
+            {t('error')}: {item.error_details}
+          </span>
         </div>
       )}
     </div>
