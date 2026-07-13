@@ -2,6 +2,10 @@ import '@testing-library/jest-dom/vitest';
 import { vi } from 'vitest';
 import React from 'react';
 
+process.env.NEXT_PUBLIC_SUPABASE_URL = 'http://localhost:54321';
+process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY = 'test-publishable-key';
+process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY = 'test-anon-key';
+
 interface MockCodeMirrorProps {
   value?: string;
   onChange?: (value: string) => void;
