@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  transition: 1s;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+
+  &:hover {
+    border-color: rgba(255, 255, 255, 1);
+  }
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}

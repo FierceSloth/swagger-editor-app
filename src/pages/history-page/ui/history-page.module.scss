@@ -1,0 +1,14 @@
+.container {
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 40px 30px;
+  margin-inline: auto;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

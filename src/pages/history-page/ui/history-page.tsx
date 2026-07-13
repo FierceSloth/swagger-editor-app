@@ -5,6 +5,7 @@ import { ROUTES } from '@/shared/config/routes';
 import { getTranslations } from 'next-intl/server';
 import { HistoryIntro } from './history-intro/history-intro';
 import { HistoryRequestCard } from './history-requst-card/history-request-card';
+import styles from './history-page.module.scss';
 
 interface HistoryPageProps {
   items: HistoryItem[];
@@ -15,7 +16,7 @@ export async function HistoryPage({ items }: HistoryPageProps) {
 
   if (!items.length) {
     return (
-      <div>
+      <div className={styles.container}>
         <EmptyHistoryMessage />
         <Link href={ROUTES.HOME}>{t('goToEditor')}</Link>
       </div>
@@ -23,9 +24,9 @@ export async function HistoryPage({ items }: HistoryPageProps) {
   }
 
   return (
-    <div>
+    <div className={styles.container}>
       <HistoryIntro />
-      <div>
+      <div className={styles.list}>
         {items.map((item) => (
           <HistoryRequestCard key={item.id} item={item} />
         ))}
