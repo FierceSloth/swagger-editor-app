@@ -7,11 +7,11 @@ vi.mock('./server', () => ({
 }));
 
 describe('getCurrentUser', () => {
-  it('should return null when getClaims returns an error', async () => {
+  it('should return null when getUser returns an error', async () => {
     const mockSupabase = {
       auth: {
-        getClaims: vi.fn().mockResolvedValue({
-          data: null,
+        getUser: vi.fn().mockResolvedValue({
+          data: { user: null },
           error: new Error('Auth error'),
         }),
       },
@@ -22,11 +22,11 @@ describe('getCurrentUser', () => {
     expect(result).toBeNull();
   });
 
-  it('should return null when getClaims has no claims in data', async () => {
+  it('should return null when getUser has no user in data', async () => {
     const mockSupabase = {
       auth: {
-        getClaims: vi.fn().mockResolvedValue({
-          data: { claims: null },
+        getUser: vi.fn().mockResolvedValue({
+          data: { user: null },
           error: null,
         }),
       },
@@ -37,12 +37,12 @@ describe('getCurrentUser', () => {
     expect(result).toBeNull();
   });
 
-  it('should return user object when getClaims succeeds', async () => {
+  it('should return user object when getUser succeeds', async () => {
     const mockUser = { id: 'user-123', email: 'test@example.com' };
     const mockSupabase = {
       auth: {
-        getClaims: vi.fn().mockResolvedValue({
-          data: { claims: mockUser },
+        getUser: vi.fn().mockResolvedValue({
+          data: { user: mockUser },
           error: null,
         }),
       },

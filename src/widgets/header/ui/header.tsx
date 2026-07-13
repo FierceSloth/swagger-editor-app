@@ -5,6 +5,7 @@ import { PageNavigation } from './page-navigation';
 import { PublicNavigation } from './public-navigation';
 import { PrivateNavigation } from './private-navigation';
 import { getCurrentUser } from '@/shared/api/supabase';
+import { HeaderScrollListener } from './header-scroll-listener';
 
 import styles from './header.module.scss';
 
@@ -14,6 +15,7 @@ export async function Header() {
 
   return (
     <header className={styles.header}>
+      <HeaderScrollListener />
       <div className={styles.blockLeft}>
         <Logo />
         <PageNavigation aboutLabel={t('about')} />

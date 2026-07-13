@@ -93,7 +93,7 @@ describe('Proxy API Routes', () => {
 
   it('should route PUT, DELETE, PATCH, OPTIONS requests', async () => {
     const target = 'https://api.external.com/data';
-    mockFetch.mockResolvedValue(new Response('ok', { status: 200 }));
+    mockFetch.mockImplementation(() => Promise.resolve(new Response('ok', { status: 200 })));
 
     const reqPut = new NextRequest(`https://api.example.com/api/proxy?targetUrl=${encodeURIComponent(target)}`, {
       method: 'PUT',
