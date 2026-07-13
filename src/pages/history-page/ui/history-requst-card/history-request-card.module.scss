@@ -1,0 +1,96 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--bg-surface-2);
+  border-radius: 16px;
+  background-color: var(--bg-surface-1);
+  backdrop-filter: blur(20px);
+  transition: border-color 0.2s ease;
+
+  &:hover {
+    border-color: var(--bg-surface-3);
+  }
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+}
+
+.url {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.statusBadge {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 10px;
+}
+
+.metaItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-family: var(--font-mono);
+  color: var(--text-tech);
+  white-space: nowrap;
+}
+
+.metaIcon {
+  width: 13px;
+  height: 13px;
+  color: var(--text-tech);
+  stroke-width: 1.5;
+}
+
+.separator {
+  margin: 0 2px;
+  color: var(--bg-surface-3);
+}
+
+.errorRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.6rem 1.25rem 0.85rem;
+  font-size: 12px;
+  border-top: 1px solid var(--bg-surface-2);
+}
+
+.errorIcon {
+  width: 13px;
+  height: 13px;
+  color: var(--red-color);
+  stroke-width: 1.5;
+  flex-shrink: 0;
+}
+
+.errorLabel {
+  font-weight: 600;
+  color: var(--red-color);
+  font-family: var(--font-mono);
+}
+
+.errorText {
+  color: var(--text-tech);
+  font-family: var(--font-mono);
+}

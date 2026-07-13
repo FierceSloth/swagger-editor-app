@@ -19,24 +19,36 @@
 
 .color-gray {
   --badge-color: var(--bg-surface-2);
-  --badge-text-color: var(--text-secondary);
-  --badge-border-color: var(--bg-surface-3);
+  --badge-text-color: rgb(156 163 175 / 1);
+  --badge-border-color: var(--bg-surface-4);
 }
 
 .color-green {
-  --badge-color: rgb(52 211 153 / 0.05);
+  --badge-color: rgb(16 185 129 / 0.1);
   --badge-text-color: var(--green-color);
-  --badge-border-color: rgb(52 211 153 / 0.1);
+  --badge-border-color: rgb(16 185 129 / 0.2);
 }
 
 .color-red {
-  --badge-color: rgb(251 113 133 / 0.05);
+  --badge-color: rgb(244 63 94 / 0.1);
   --badge-text-color: var(--red-color);
   --badge-border-color: rgb(244 63 94 / 0.2);
 }
 
 .color-blue {
-  --badge-color: rgb(59 130 246 / 0.2);
+  --badge-color: rgb(59 130 246 / 0.1);
   --badge-text-color: var(--blue-color);
   --badge-border-color: rgb(59 130 246 / 0.2);
+}
+
+.color-purple {
+  --badge-color: rgb(139 92 246 / 0.1);
+  --badge-text-color: var(--purple-color);
+  --badge-border-color: rgb(139 92 246 / 0.2);
+}
+
+.color-orange {
+  --badge-color: rgb(249 115 22 / 0.1);
+  --badge-text-color: var(--orange-color);
+  --badge-border-color: rgb(249 115 22 / 0.2);
 }

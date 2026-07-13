@@ -9,9 +9,10 @@ interface IProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
   error?: string;
   ref?: Ref<HTMLInputElement>;
+  withErrorPlug?: boolean;
 }
 
-export function Input({ label, error, className, ref, id, ...rest }: IProps): ReactNode {
+export function Input({ label, error, className, ref, id, withErrorPlug = true, ...rest }: IProps): ReactNode {
   const generatedId = useId();
   const inputId = id || generatedId;
 
@@ -23,14 +24,16 @@ export function Input({ label, error, className, ref, id, ...rest }: IProps): Re
 
       <input className={clsx(styles.input, error && styles.inputError)} id={inputId} ref={ref} {...rest} />
 
-      <div className={styles.errorContainer}>
-        {error && (
-          <>
-            <AlertIcon className={styles.errorIcon} />
-            <span className={styles.errorMessage}>{error}</span>
-          </>
-        )}
-      </div>
+      {(error || withErrorPlug) && (
+        <div className={clsx(styles.errorContainer, withErrorPlug && styles.withPlug)}>
+          {error && (
+            <>
+              <AlertIcon className={styles.errorIcon} />
+              <span className={styles.errorMessage}>{error}</span>
+            </>
+          )}
+        </div>
+      )}
     </div>
   );
 }

@@ -51,7 +51,17 @@
     "title": "Не найдено"
   },
   "History": {
-    "title": "Аналитика"
+    "title": "История",
+    "emptyTitle": "Активность не обнаружена",
+    "emptyDescription": "Вы ещё не выполняли ни одного запроса. Подключите протокол или начните работу в редакторе, чтобы увидеть историю взаимодействий и аналитику.",
+    "goToEditor": "Перейти в Editor",
+    "goToViewer": "Перейти в Viewer",
+    "status": "Статус",
+    "duration": "Длительность",
+    "timestamp": "Время",
+    "requestSize": "Размер запроса",
+    "responseSize": "Размер ответа",
+    "error": "Ошибка"
   },
   "SwaggerEditor": {
     "format": "ФОРМАТ:",
@@ -67,6 +77,60 @@
     "signUp": "Регистрация",
     "history": "История",
     "signOut": "Выйти"
+  },
+  "EndpointParameters": {
+    "title": "Параметры",
+    "name": "Имя",
+    "in": "Расположение",
+    "type": "Тип",
+    "required": "Обязательный",
+    "description": "Описание",
+    "yes": "Да",
+    "no": "Нет"
+  },
+  "TryItOut": {
+    "title": "Попробовать",
+    "execute": "Выполнить",
+    "generateCurl": "Сгенерировать cURL",
+    "requestBody": "Тело запроса",
+    "required": "обязательно",
+    "invalidJson": "Неверный формат JSON",
+    "executing": "Выполнение...",
+    "response": "Ответ",
+    "curlCommand": "Команда cURL",
+    "copy": "Копировать",
+    "copied": "Скопировано",
+    "placeholder": {
+      "param": "Введите {in}...",
+      "json": "// Данные JSON"
+    }
+  },
+  "EndpointParameters": {
+    "title": "Параметры",
+    "name": "Имя",
+    "in": "Расположение",
+    "type": "Тип",
+    "required": "Обязательный",
+    "description": "Описание",
+    "yes": "Да",
+    "no": "Нет"
+  },
+  "TryItOut": {
+    "title": "Попробовать",
+    "execute": "Выполнить",
+    "generateCurl": "Сгенерировать cURL",
+    "requestBody": "Тело запроса",
+    "required": "обязательно",
+    "invalidJson": "Неверный формат JSON",
+    "executing": "Выполнение...",
+    "response": "Ответ",
+    "curlCommand": "Команда cURL",
+    "copy": "Копировать",
+    "copied": "Скопировано",
+    "placeholder": {
+      "param": "Введите {in}...",
+      "json": "// Данные JSON"
+    }
   },
   "Footer": {
     "about": "О проекте",
@@ -122,5 +186,16 @@
         "description": "Исходный код проекта"
       }
     }
+  },
+  "RequestBody": {
+    "title": "ТЕЛО ЗАПРОСА"
+  },
+  "ResponseList": {
+    "title": "ОТВЕТЫ"
+  },
+  "HistoryPage": {
+    "badge": "USER_ANALYTICS // SESSION:{id}",
+    "title": "История & Аналитика",
+    "description": "Полный журнал всех операций со схемой и взаимодействий с API. Отслеживание задержек, эффективности нагрузки и статуса протоколов в реальном времени."
   }
 }
