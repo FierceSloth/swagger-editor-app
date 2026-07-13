@@ -13,5 +13,9 @@ export default async function Page() {
 
   const items = await loadHistory(user.id);
 
-  return <HistoryPage items={items} />;
+  return (
+    <main>
+      <HistoryPage items={items} />
+    </main>
+  );
 }
