@@ -11,6 +11,18 @@ export default defineConfig({
     coverage: {
       provider: 'v8',
       reporter: ['text', 'json', 'html'],
+      exclude: [
+        'node_modules/**',
+        '.next/**',
+        'coverage/**',
+        'vitest.config.ts',
+        'vitest.setup.ts',
+        'next.config.ts',
+        'proxy.ts',
+        '**/index.ts',
+        '**/*.module.scss',
+        '**/*.scss',
+      ],
     },
   },
   resolve: {
@@ -22,6 +34,7 @@ export default defineConfig({
       '@features': path.resolve(__dirname, './src/features'),
       '@widgets': path.resolve(__dirname, './src/widgets'),
       '@pages': path.resolve(__dirname, './src/pages'),
+      'server-only': path.resolve(__dirname, './vitest.setup.ts'),
     },
   },
 });

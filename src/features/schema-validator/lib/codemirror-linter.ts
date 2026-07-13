@@ -13,7 +13,7 @@ const severityMap = {
 
 type Severity = Diagnostic['severity'];
 
-export const openapiLinter = linter(async (view: EditorView) => {
+export const runOpenapiLinter = async (view: EditorView) => {
   const text = view.state.doc.toString();
 
   const results = await validateSchema(text);
@@ -40,4 +40,6 @@ export const openapiLinter = linter(async (view: EditorView) => {
   });
 
   return diagnostics;
-});
+};
+
+export const openapiLinter = linter(runOpenapiLinter);
