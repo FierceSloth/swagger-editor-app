@@ -99,7 +99,7 @@
       "anna": {
         "name": "Anna (dilmun1101)",
         "role": "Developer // Frontend",
-        "description": "Implemented the About page, Supabase integration, and core authentication flows, including session management, protected routes, and user schema persistence.\nAlso configured CI/CD processes, including automated checks and preview deployments for project updates."
+        "description": "Implemented the About page, Supabase integration, and core authentication flows, including session management, protected routes, and user schema persistence.\nAlso configured CI/CD processes, including automated checks and preview deployments for project updates.\nBuilt the request analytics pipeline: designed the history table in Supabase, captured per-request metrics (duration, status, method, size, URL, timestamp) during Try-It-Out execution, and implemented the History page with SSR,  route protection, empty-state handling, and a sorted analytics UI."
       }
     }
   },
