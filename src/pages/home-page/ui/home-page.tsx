@@ -61,7 +61,6 @@ export function HomePage() {
 
     void saveSchema();
   }, [user?.id, debouncedText]);
-
   return (
     <div className={styles.container}>
       <div className={styles.editor}>

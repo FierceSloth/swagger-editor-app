@@ -125,7 +125,6 @@ describe('groupEndpoints', () => {
       { name: 'X-Op-Param', in: 'header', required: false },
     ]);
   });
-
   it('should return undefined if both path and operation params are empty/undefined', () => {
     const paths: Record<string, IOpenApiPathItem> = {
       '/test': {
