@@ -105,10 +105,87 @@
       "json": "// JSON data"
     }
   },
+  "EndpointParameters": {
+    "title": "Parameters",
+    "name": "Name",
+    "in": "In",
+    "type": "Type",
+    "required": "Required",
+    "description": "Description",
+    "yes": "Yes",
+    "no": "No"
+  },
+  "TryItOut": {
+    "title": "Try It Out",
+    "execute": "Execute",
+    "generateCurl": "Generate cURL",
+    "requestBody": "Request Body",
+    "required": "required",
+    "invalidJson": "Invalid JSON format",
+    "response": "Response",
+    "executing": "Executing...",
+    "curlCommand": "cURL command",
+    "copy": "Copy",
+    "copied": "Copied",
+    "placeholder": {
+      "param": "Enter {in}...",
+      "json": "// JSON data"
+    }
+  },
   "Footer": {
     "about": "About",
     "team1": "Built with",
     "team2": "by team GMT+5 Development"
+  },
+  "AboutHero": {
+    "label": "Education // Course",
+    "title": "The Rolling Scopes School",
+    "description": "This project was developed as a final stage of the React JS course. RS School is a community-based non-profit education project that has been helping people start their careers in IT for over 10 years.",
+    "courseLink": "View course details"
+  },
+  "AboutProject": {
+    "title": "About This Project",
+    "description": "AURA // EDITOR is a modern, high-performance OpenAPI specification tool designed for the next generation of web services. It provides a real-time validation environment, schema visualization, and interactive documentation, all wrapped in a sleek, minimalist interface inspired by futuristic tech aesthetics."
+  },
+  "Contributors": {
+    "title": "Core Contributors",
+    "items": {
+      "dastan": {
+        "name": "Dastan (FierceSloth)",
+        "role": "Team Lead // Frontend",
+        "description": "Architected the frontend application and led the implementation of the editor and Viewer core features, including OpenAPI validation, schema synchronization, JSON/YAML conversion, and the interactive Try-It-Out form.\nAlso set up the project's foundational infrastructure, including Next.js initialization, the UI Kit, auth form validation, and the responsive split-view layout for the Editor and Viewer."
+      },
+      "meruert": {
+        "name": "Meruert (merucoding)",
+        "role": "Developer // Frontend",
+        "description": "Set up the core application architecture, including routing, i18n, API request proxying, and shared UI mechanisms. \nImplemented the Header and Footer, global loading and error states, as well as toast notifications, Spinner, and the project’s base pages. \nAlso implemented the Viewer Try-It-Out flow, including sending form data through a proxy server and rendering the response status code, headers, and body."
+      },
+      "anna": {
+        "name": "Anna (dilmun1101)",
+        "role": "Developer // Frontend",
+        "description": "Implemented the About page, Supabase integration, and core authentication flows, including session management, protected routes, and user schema persistence.\nConfigured CI/CD processes, including automated checks and preview deployments for project updates.\nDesigned the history table in Supabase and implemented request metrics collection during Try-It-Out execution."
+      }
+    }
+  },
+  "PoweredBy": {
+    "title": "Powered by Industry Standards"
+  },
+  "UsefulLinks": {
+    "title": "Useful Links",
+    "items": {
+      "rs-school": {
+        "title": "RS School",
+        "description": "Community education platform"
+      },
+      "openapi": {
+        "title": "OpenAPI Initiative",
+        "description": "Standard for HTTP APIs"
+      },
+      "github": {
+        "title": "GitHub Repository",
+        "description": "Source code for the project"
+      }
+    }
   },
   "RequestBody": {
     "title": "REQUEST BODY"
