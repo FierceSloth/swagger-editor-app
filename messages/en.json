@@ -51,7 +51,17 @@
     "title": "Not Found"
   },
   "History": {
-    "title": "History"
+    "title": "History",
+    "emptyTitle": "No Activity Detected",
+    "emptyDescription": "You haven't executed any requests yet. Connect a protocol or start building in the editor to see your interaction history and analytics.",
+    "goToEditor": "Go to Editor",
+    "goToViewer": "Go to Viewer",
+    "status": "Status",
+    "duration": "Duration",
+    "timestamp": "Timestamp",
+    "requestSize": "Request size",
+    "responseSize": "Response size",
+    "error": "Error"
   },
   "SwaggerEditor": {
     "format": "FORMAT:",
@@ -105,5 +115,10 @@
   },
   "ResponseList": {
     "title": "RESPONSES"
+  },
+  "HistoryPage": {
+    "badge": "USER_ANALYTICS // SESSION:{id}",
+    "title": "History & Analytics",
+    "description": "Complete audit trail of all schema operations and API interactions. Track latency, payload efficiency, and protocol status in real-time."
   }
 }
