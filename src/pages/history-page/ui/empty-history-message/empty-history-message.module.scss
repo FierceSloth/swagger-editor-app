@@ -1,0 +1,113 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  max-width: 480px;
+}
+
+.iconContainer {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.ringOuter {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px dashed var(--bg-surface-3);
+  animation: spin 15s linear infinite;
+}
+
+.ringInner {
+  position: absolute;
+  inset: 16px;
+  border-radius: 50%;
+  border: 1px dashed var(--bg-surface-4);
+  animation: spinReverse 12s linear infinite;
+}
+
+.iconGlow {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--blue-color);
+  filter: blur(20px);
+  opacity: 0.2;
+}
+
+.icon {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  color: #6b8bb8;
+  stroke-width: 1.5;
+  z-index: 1;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinReverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.scanLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-tech);
+}
+
+.scanDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--green-color);
+  box-shadow: 0 0 6px var(--green-color);
+}
+
+.badge {
+  width: fit-content;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 11px;
+}
+
+.title {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.description {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.6;
+}

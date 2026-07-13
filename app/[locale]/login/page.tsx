@@ -1,11 +1,10 @@
-import { getTranslations } from 'next-intl/server';
+import { AuthForm } from '@/features/auth-form';
+import styles from '../../app.module.scss';
 
-export default async function Page() {
-  const t = await getTranslations('Login');
-
+export default function Page() {
   return (
-    <main>
-      <h1>{t('title')}</h1>
+    <main className={styles.main}>
+      <AuthForm variant="login" />
     </main>
   );
 }

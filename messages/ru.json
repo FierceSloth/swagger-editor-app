@@ -6,16 +6,62 @@
     "title": "О проекте"
   },
   "Login": {
-    "title": "Вход"
+    "title": "Вход",
+    "subtitle": "Введите ваши данные для доступа к ядру AURA.",
+    "emailLabel": "Адрес электронной почты",
+    "passcodeLabel": "Пароль",
+    "submitButton": "ВОЙТИ",
+    "switchText": "Нет аккаунта?",
+    "switchLink": "Регистрация",
+    "errors": {
+      "invalidEmail": "Неверный формат email",
+      "passwordMinLength": "Минимум 8 символов",
+      "passwordNeedLetter": "Нужна хотя бы 1 буква",
+      "passwordNeedNumber": "Нужна хотя бы 1 цифра",
+      "passwordNeedSpecial": "Нужен хотя бы 1 специальный символ",
+      "invalidCredentials": "Неверный email или пароль",
+      "userAlreadyExists": "Пользователь с таким email уже зарегистрирован",
+      "tooManyRequests": "Слишком много попыток, попробуйте позже",
+      "unknownError": "Что-то пошло не так, попробуйте снова"
+    }
   },
   "Register": {
-    "title": "Регистрация"
+    "title": "Регистрация",
+    "subtitle": "Создайте своё защищённое присутствие в сети AURA.",
+    "emailLabel": "Адрес электронной почты",
+    "passcodeLabel": "Пароль",
+    "confirmPasscodeLabel": "Подтвердите пароль",
+    "submitButton": "ЗАРЕГИСТРИРОВАТЬСЯ",
+    "switchText": "Уже есть аккаунт?",
+    "switchLink": "Войти",
+    "errors": {
+      "invalidEmail": "Неверный формат email",
+      "passwordMinLength": "Минимум 8 символов",
+      "passwordNeedLetter": "Нужна хотя бы 1 буква",
+      "passwordNeedNumber": "Нужна хотя бы 1 цифра",
+      "passwordNeedSpecial": "Нужен хотя бы 1 специальный символ",
+      "passcodeMismatch": "Пароли не совпадают",
+      "invalidCredentials": "Неверный email или пароль",
+      "userAlreadyExists": "Пользователь с таким email уже зарегистрирован",
+      "tooManyRequests": "Слишком много попыток, попробуйте позже",
+      "unknownError": "Что-то пошло не так, попробуйте снова"
+    }
   },
   "NotFound": {
     "title": "Не найдено"
   },
   "History": {
-    "title": "Аналитика"
+    "title": "История",
+    "emptyTitle": "Активность не обнаружена",
+    "emptyDescription": "Вы ещё не выполняли ни одного запроса. Подключите протокол или начните работу в редакторе, чтобы увидеть историю взаимодействий и аналитику.",
+    "goToEditor": "Перейти в Editor",
+    "goToViewer": "Перейти в Viewer",
+    "status": "Статус",
+    "duration": "Длительность",
+    "timestamp": "Время",
+    "requestSize": "Размер запроса",
+    "responseSize": "Размер ответа",
+    "error": "Ошибка"
   },
   "SwaggerEditor": {
     "format": "ФОРМАТ:",
@@ -32,6 +78,60 @@
     "history": "История",
     "signOut": "Выйти"
   },
+  "EndpointParameters": {
+    "title": "Параметры",
+    "name": "Имя",
+    "in": "Расположение",
+    "type": "Тип",
+    "required": "Обязательный",
+    "description": "Описание",
+    "yes": "Да",
+    "no": "Нет"
+  },
+  "TryItOut": {
+    "title": "Попробовать",
+    "execute": "Выполнить",
+    "generateCurl": "Сгенерировать cURL",
+    "requestBody": "Тело запроса",
+    "required": "обязательно",
+    "invalidJson": "Неверный формат JSON",
+    "executing": "Выполнение...",
+    "response": "Ответ",
+    "curlCommand": "Команда cURL",
+    "copy": "Копировать",
+    "copied": "Скопировано",
+    "placeholder": {
+      "param": "Введите {in}...",
+      "json": "// Данные JSON"
+    }
+  },
+  "EndpointParameters": {
+    "title": "Параметры",
+    "name": "Имя",
+    "in": "Расположение",
+    "type": "Тип",
+    "required": "Обязательный",
+    "description": "Описание",
+    "yes": "Да",
+    "no": "Нет"
+  },
+  "TryItOut": {
+    "title": "Попробовать",
+    "execute": "Выполнить",
+    "generateCurl": "Сгенерировать cURL",
+    "requestBody": "Тело запроса",
+    "required": "обязательно",
+    "invalidJson": "Неверный формат JSON",
+    "executing": "Выполнение...",
+    "response": "Ответ",
+    "curlCommand": "Команда cURL",
+    "copy": "Копировать",
+    "copied": "Скопировано",
+    "placeholder": {
+      "param": "Введите {in}...",
+      "json": "// Данные JSON"
+    }
+  },
   "Footer": {
     "about": "О проекте",
     "team1": "Создано с",
@@ -44,5 +144,66 @@
   },
   "Spinner": {
     "label": "Загрузка..."
+  },
+  "AboutHero": {
+    "label": "Обучение // Курс",
+    "title": "The Rolling Scopes School",
+    "description": "Этот проект был разработан как финальный этап курса React JS. RS School — это некоммерческий образовательный проект сообщества, который уже более 10 лет помогает людям начать карьеру в IT.",
+    "courseLink": "Подробнее о курсе"
+  },
+  "AboutProject": {
+    "title": "О проекте",
+    "description": "AURA // EDITOR — это современный высокопроизводительный инструмент для работы со спецификациями OpenAPI, созданный для нового поколения веб-сервисов. Он предоставляет среду валидации в реальном времени, визуализацию схем и интерактивную документацию в лаконичном минималистичном интерфейсе с футуристичной эстетикой."
+  },
+  "Contributors": {
+    "title": "Ключевые участники",
+    "items": {
+      "dastan": {
+        "name": "Дастан (FierceSloth)",
+        "role": "Тимлид // Frontend",
+        "description": "Спроектировал frontend-архитектуру приложения и руководил реализацией ключевых частей редактора и Viewer, включая валидацию OpenAPI, синхронизацию схемы, конвертацию JSON/YAML и интерактивную форму Try-It-Out.\nТакже настроил базовую инфраструктуру проекта, включая инициализацию Next.js, UI Kit, валидацию auth-форм и адаптивный split-view layout для Editor и Viewer."
+      },
+      "meruert": {
+        "name": "Меруерт (merucoding)",
+        "role": "Разработчик // Frontend",
+        "description": "Настроила базовую архитектуру приложения, включая роутинг, i18n, проксирование API-запросов и общие UI-механизмы. \nРеализовала Header и Footer, глобальные состояния загрузки и ошибок, а также toast-уведомления, Spinner и базовые страницы проекта. \nДля Viewer реализовала выполнение запроса через Try-It-Out: отправку данных формы через прокси-сервер, получение ответа и рендеринг статус-кода, заголовков и тела ответа."
+      },
+      "anna": {
+        "name": "Анна (dilmun1101)",
+        "role": "Разработчик // Frontend",
+        "description": "Реализовала страницу About, интеграцию Supabase и ключевые сценарии авторизации, включая управление сессией, защищённые маршруты и сохранение пользовательских схем.\nНастроила CI/CD-процессы, включая автоматический запуск проверок и preview-деплой для изменений проекта.\nCпроектировала таблицу history в Supabase, реализовала сохранение метрик запросов при выполнении Try-It-Out."
+      }
+    }
+  },
+  "PoweredBy": {
+    "title": "Создано на базе стандартов"
+  },
+  "UsefulLinks": {
+    "title": "Полезные ссылки",
+    "items": {
+      "rs-school": {
+        "title": "RS School",
+        "description": "Образовательная платформа сообщества"
+      },
+      "openapi": {
+        "title": "OpenAPI Initiative",
+        "description": "Стандарт для HTTP API"
+      },
+      "github": {
+        "title": "GitHub репозиторий",
+        "description": "Исходный код проекта"
+      }
+    }
+  },
+  "RequestBody": {
+    "title": "ТЕЛО ЗАПРОСА"
+  },
+  "ResponseList": {
+    "title": "ОТВЕТЫ"
+  },
+  "HistoryPage": {
+    "badge": "USER_ANALYTICS // SESSION:{id}",
+    "title": "История & Аналитика",
+    "description": "Полный журнал всех операций со схемой и взаимодействий с API. Отслеживание задержек, эффективности нагрузки и статуса протоколов в реальном времени."
   }
 }

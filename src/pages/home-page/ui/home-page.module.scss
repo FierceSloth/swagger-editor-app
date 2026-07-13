@@ -1,9 +1,12 @@
 .container {
   display: flex;
-  flex: 1;
-  width: 100%;
   flex-direction: row;
   overflow: hidden;
+  position: absolute;
+  top: 80px;
+  bottom: 0;
+  left: 0;
+  right: 0;
 
   @media (max-aspect-ratio: 1/1) {
     flex-direction: column;
