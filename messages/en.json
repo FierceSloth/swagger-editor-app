@@ -51,7 +51,10 @@
     "title": "Not Found"
   },
   "History": {
-    "title": "History"
+    "title": "History",
+    "emptyTitle": "No Activity Detected",
+    "emptyDescription": "You haven't executed any requests yet. Connect a protocol or start building in the editor to see your interaction history and analytics.",
+    "goToEditor": "Go to Editor"
   },
   "SwaggerEditor": {
     "format": "FORMAT:",
@@ -105,5 +108,9 @@
   },
   "ResponseList": {
     "title": "RESPONSES"
+  },
+  "HistoryPage": {
+    "title": "History & Analytics",
+    "description": "Complete audit trail of all schema operations and API interactions."
   }
 }
