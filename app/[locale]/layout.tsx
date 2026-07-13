@@ -14,6 +14,7 @@ import { Header } from '@/widgets/header';
 
 import '@/app/styles/style.scss';
 import clsx from 'clsx';
+import { ToastProvider } from '@/shared/ui/toast';
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -59,9 +60,11 @@ export default async function RootLayout({ children, params }: Props) {
         <ArcBackground />
         <NextIntlClientProvider>
           <AuthProvider initialUser={user}>
-            <Header />
-            {children}
-            <Footer />
+            <ToastProvider>
+              <Header />
+              {children}
+              <Footer />
+            </ToastProvider>
           </AuthProvider>
         </NextIntlClientProvider>
       </body>

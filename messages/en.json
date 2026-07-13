@@ -137,6 +137,14 @@
     "team1": "Built with",
     "team2": "by team GMT+5 Development"
   },
+  "Error": {
+    "title": "Something went wrong",
+    "description": "An unexpected error occurred. Please try again.",
+    "tryAgain": "Try again"
+  },
+  "Spinner": {
+    "label": "Loading..."
+  },
   "AboutHero": {
     "label": "Education // Course",
     "title": "The Rolling Scopes School",

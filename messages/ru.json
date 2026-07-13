@@ -137,6 +137,14 @@
     "team1": "Создано с",
     "team2": "командой GMT+5 Development"
   },
+  "Error": {
+    "title": "Что-то пошло не так",
+    "description": "Произошла непредвиденная ошибка. Попробуйте снова.",
+    "tryAgain": "Попробовать снова"
+  },
+  "Spinner": {
+    "label": "Загрузка..."
+  },
   "AboutHero": {
     "label": "Обучение // Курс",
     "title": "The Rolling Scopes School",
