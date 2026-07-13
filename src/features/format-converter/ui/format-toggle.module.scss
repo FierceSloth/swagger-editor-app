@@ -1,0 +1,29 @@
+.wrapper {
+  font-family: var(--font-mono);
+  display: flex;
+  gap: 0.5rem;
+}
+
+.text {
+  font-size: 11px;
+}
+
+.format {
+  text-transform: uppercase;
+  color: var(--text-primary);
+  font-size: 11px;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  text-transform: uppercase;
+}
+
+.convertIcon {
+  width: 12px;
+  height: 12px;
+  stroke-width: 3;
+}

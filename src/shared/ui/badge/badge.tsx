@@ -12,9 +12,5 @@ interface StatusBadgeProps {
 }
 
 export function Badge({ children, color = 'gray', className }: StatusBadgeProps): ReactElement {
-  return (
-    <div className={clsx(styles.statusBadge, styles[`color-${color}`], className)}>
-      <span className={styles.text}>{children}</span>
-    </div>
-  );
+  return <div className={clsx(styles.statusBadge, styles[`color-${color}`], className)}>{children}</div>;
 }

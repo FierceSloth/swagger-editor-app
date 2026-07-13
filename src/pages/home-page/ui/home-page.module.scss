@@ -1,0 +1,43 @@
+.container {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  flex-direction: row;
+  overflow: hidden;
+
+  @media (max-aspect-ratio: 1/1) {
+    flex-direction: column;
+  }
+}
+
+.editor,
+.viewer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  min-width: 0;
+}
+
+.editor {
+  border-right: 1px solid var(--bg-surface-2);
+
+  @media (max-aspect-ratio: 1/1) {
+    border-right: none;
+    border-bottom: 1px solid var(--bg-surface-2);
+  }
+}
+
+.viewer {
+  background-color: rgba(0, 0, 0, 0.2);
+  color: var(--text-primary);
+}
+
+.stub {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0.5;
+}

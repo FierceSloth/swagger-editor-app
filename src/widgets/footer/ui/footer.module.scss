@@ -1,0 +1,28 @@
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 45px;
+  border-top: 1px solid var(--bg-surface-3);
+  font-size: 1rem;
+  color: var(--text-tech);
+  backdrop-filter: blur(12px);
+}
+
+.about,
+.schoolName {
+  display: inline-block;
+  transition: transform 0.2s;
+  font-size: 1rem;
+  color: var(--text-tech);
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.icon {
+  height: 14px;
+  width: 14px;
+  margin: 0 5px;
+  stroke-width: 2.5;
+}

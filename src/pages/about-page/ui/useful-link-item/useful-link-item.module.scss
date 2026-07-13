@@ -1,0 +1,38 @@
+.item {
+  text-decoration: none;
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  line-height: 1.5;
+
+  &:hover .icon {
+    color: #000;
+  }
+
+  &:hover .iconWrapper {
+    background: #fff;
+  }
+}
+
+.iconWrapper {
+  min-width: 30px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.06);
+  transition: 1.5s;
+}
+
+.icon {
+  width: 30px;
+  aspect-ratio: 1/1;
+}
+
+.description {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 14px;
+}

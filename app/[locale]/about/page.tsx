@@ -1,11 +1,9 @@
-import { getTranslations } from 'next-intl/server';
+import { AboutPage } from '@/pages/about-page';
 
-export default async function AboutPage() {
-  const t = await getTranslations('About');
-
+export default function Page() {
   return (
     <main>
-      <h1>{t('title')}</h1>
+      <AboutPage />
     </main>
   );
 }

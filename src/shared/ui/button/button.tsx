@@ -3,7 +3,7 @@ import { type ButtonHTMLAttributes, type ReactNode } from 'react';
 
 import styles from './button.module.scss';
 
-export type ButtonVariant = 'primary' | 'secondary' | 'ghost';
+export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'tertiary';
 
 interface IProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
