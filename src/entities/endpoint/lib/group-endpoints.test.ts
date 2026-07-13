@@ -125,4 +125,48 @@ describe('groupEndpoints', () => {
       { name: 'X-Op-Param', in: 'header', required: false },
     ]);
   });
+
+  it('should return undefined if both path and operation params are empty/undefined', () => {
+    const paths: Record<string, IOpenApiPathItem> = {
+      '/test': {
+        get: {
+          summary: 'Get request',
+        },
+      },
+    };
+
+    const result = groupEndpoints(paths);
+
+    expect(result[0].endpoints[0].details.parameters).toBeUndefined();
+  });
+
+  it('should return operation params if path params are empty/undefined', () => {
+    const paths: Record<string, IOpenApiPathItem> = {
+      '/test': {
+        get: {
+          summary: 'Get request',
+          parameters: [{ name: 'X-Op-Param', in: 'header' }],
+        },
+      },
+    };
+
+    const result = groupEndpoints(paths);
+
+    expect(result[0].endpoints[0].details.parameters).toEqual([{ name: 'X-Op-Param', in: 'header' }]);
+  });
+
+  it('should return path params if operation params are empty/undefined', () => {
+    const paths: Record<string, IOpenApiPathItem> = {
+      '/test': {
+        parameters: [{ name: 'X-Path-Param', in: 'header' }],
+        get: {
+          summary: 'Get request',
+        },
+      },
+    };
+
+    const result = groupEndpoints(paths);
+
+    expect(result[0].endpoints[0].details.parameters).toEqual([{ name: 'X-Path-Param', in: 'header' }]);
+  });
 });
