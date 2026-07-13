@@ -3,7 +3,7 @@ import type { ReactElement, ReactNode } from 'react';
 
 import styles from './badge.module.scss';
 
-type BadgeColor = 'gray' | 'green' | 'red' | 'blue';
+export type BadgeColor = 'gray' | 'green' | 'red' | 'blue' | 'purple' | 'orange';
 
 interface StatusBadgeProps {
   children: ReactNode;
