@@ -9,7 +9,7 @@ export async function HistoryIntro() {
 
   return (
     <div className={styles.wrapper}>
-      <Badge className={styles.meta}>{t('badge')}</Badge>
+      <Badge className={styles.meta}>{t('badge', { id: '0492' })}</Badge>
       <h1 className={styles.title}>{t('title')}</h1>
       <p className={styles.description}>{t('description')}</p>
     </div>

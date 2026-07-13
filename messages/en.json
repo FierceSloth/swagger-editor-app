@@ -116,7 +116,7 @@
     "title": "RESPONSES"
   },
   "HistoryPage": {
-    "badge": "USER_ANALYTICS // SESSION_6767",
+    "badge": "USER_ANALYTICS // SESSION:{id}",
     "title": "History & Analytics",
     "description": "Complete audit trail of all schema operations and API interactions. Track latency, payload efficiency, and protocol status in real-time."
   }
