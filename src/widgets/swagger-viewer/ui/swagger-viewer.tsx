@@ -7,17 +7,18 @@ import Markdown from 'react-markdown';
 import styles from './swagger-viewer.module.scss';
 
 export interface IOpenApiSchema {
-  openapi: string;
-  info: {
-    title: string;
-    version: string;
+  openapi?: string;
+  swagger?: string;
+  info?: {
+    title?: string;
+    version?: string;
     description?: string;
   };
   servers?: Array<{
     url: string;
     description?: string;
   }>;
-  paths: Record<string, IOpenApiPathItem>;
+  paths?: Record<string, IOpenApiPathItem>;
   [key: string]: unknown;
 }
 
@@ -30,14 +31,16 @@ export const SwaggerViewer = memo(({ schema }: IProps) => {
 
   const serverUrl = schema.servers?.[0]?.url ?? '';
 
-  const groups = groupEndpoints(schema.paths);
+  const groups = schema.paths ? groupEndpoints(schema.paths) : [];
   return (
     <div className={styles.wrapper}>
       <header className={styles.header}>
         <div className={styles.apiInfo}>
-          <Badge className={styles.meta}>OpenApi // {schema.openapi}</Badge>
-          <h1 className={styles.apiTitle}>{schema.info.title}</h1>
-          {schema.info.description && (
+          {(schema.openapi || schema.swagger) && (
+            <Badge className={styles.meta}>OpenApi // {schema.openapi || schema.swagger}</Badge>
+          )}
+          {schema.info?.title && <h1 className={styles.apiTitle}>{schema.info.title}</h1>}
+          {schema.info?.description && (
             <div className={styles.apiDescription}>
               <Markdown>{schema.info.description}</Markdown>
             </div>

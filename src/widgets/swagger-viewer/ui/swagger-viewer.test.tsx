@@ -55,4 +55,13 @@ describe('SwaggerViewer Component', () => {
     expect(screen.getByText('https://api.mock.com')).toBeInTheDocument();
     expect(screen.getByText('/test')).toBeInTheDocument();
   });
+
+  it('should not throw when schema info is missing or undefined', () => {
+    const incompleteSchema = {
+      openapi: '3.0.0',
+    } as IOpenApiSchema;
+
+    expect(() => renderWithTranslations(<SwaggerViewer schema={incompleteSchema} />)).not.toThrow();
+    expect(screen.getByText('OpenApi // 3.0.0')).toBeInTheDocument();
+  });
 });

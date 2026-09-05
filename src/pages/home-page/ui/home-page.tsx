@@ -7,7 +7,6 @@ import { loadEditorSchema, saveEditorSchema } from '@/features/schema-persistenc
 import { parseToObject } from '@/shared/lib/parse-to-object';
 import { useDebounce } from '@/shared/lib/hooks';
 import { SwaggerEditor } from '@/widgets/swagger-editor';
-import type { IOpenApiSchema } from '@/widgets/swagger-viewer/ui/swagger-viewer';
 import { SwaggerViewer } from '@/widgets/swagger-viewer/ui/swagger-viewer';
 
 import styles from './home-page.module.scss';
@@ -42,7 +41,12 @@ export function HomePage() {
   const parsedSchema = useMemo(() => {
     if (!isSchemaValid || !rawText) return null;
 
-    return parseToObject(rawText) as IOpenApiSchema;
+    const parsed = parseToObject(rawText);
+    if (!parsed || typeof parsed !== 'object' || (!('openapi' in parsed) && !('swagger' in parsed))) {
+      return null;
+    }
+
+    return parsed;
   }, [rawText, isSchemaValid]);
 
   useEffect(() => {
