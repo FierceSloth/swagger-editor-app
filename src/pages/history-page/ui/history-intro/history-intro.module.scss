@@ -1,0 +1,28 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.meta {
+  width: fit-content;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 10px;
+}
+
+.title {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.description {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.5;
+  max-width: 600px;
+}

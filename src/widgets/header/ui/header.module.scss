@@ -1,0 +1,62 @@
+.header {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--bg-surface-3);
+  padding: 10px 45px;
+  position: fixed;
+  width: 100%;
+  backdrop-filter: blur(12px);
+  z-index: 2;
+  transition:
+    height 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    padding 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    background-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    border-bottom-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  &:global(.sticky) {
+    height: 60px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: rgba(3, 4, 7, 0.7);
+    border-bottom-color: var(--bg-surface-4);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logoText {
+  font-size: 20px;
+  font-weight: 500;
+  span {
+    font-weight: 300;
+    color: var(--text-tech);
+  }
+}
+
+.blockLeft,
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.nav {
+  font-weight: 500;
+  font-size: 14px;
+  transition: transform 0.2s;
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.button {
+  padding: 8px 24px;
+}
