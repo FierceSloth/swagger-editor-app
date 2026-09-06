@@ -8,6 +8,7 @@ import { parseToObject } from '@/shared/lib/parse-to-object';
 import { useDebounce } from '@/shared/lib/hooks';
 import { SwaggerEditor } from '@/widgets/swagger-editor';
 import { SwaggerViewer } from '@/widgets/swagger-viewer/ui/swagger-viewer';
+import { INITIAL_SCHEMA } from '../model/initial-schema';
 
 import styles from './home-page.module.scss';
 
@@ -15,7 +16,7 @@ const DEBOUNCE_DELAY_SIZE_MS = 1_000; // 1 second
 
 export function HomePage() {
   const { user } = useAuth();
-  const [rawText, setRawText] = useState('');
+  const [rawText, setRawText] = useState(INITIAL_SCHEMA);
   const [isSchemaValid, setIsSchemaValid] = useState(false);
   const debouncedText = useDebounce(rawText, DEBOUNCE_DELAY_SIZE_MS);
 
